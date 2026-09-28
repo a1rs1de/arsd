@@ -510,6 +510,13 @@
 
     // ============ 1. SPEAKER ============
     var src = importRel(C.source, "other");
+    if (!src) {       // не нашли по пути из данных — даём выбрать файл вручную
+        var pick = File.openDialog("Не найден исходник:\n" + projFile(C.source).fsName +
+                                   "\n\nВыберите видео (отрезок 9:20–11:20)", "*.mp4;*.mov;*.mkv");
+        if (pick) {
+            src = inFolder(app.project.importFile(new ImportOptions(pick)));
+        }
+    }
     if (!src) { alert("Нет исходника: " + projFile(C.source).fsName); app.endUndoGroup(); return; }
     var speaker = inFolder(app.project.items.addComp("SPEAKER", W, H, 1, C.duration, FPS));
     var i, j;
