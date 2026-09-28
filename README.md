@@ -13,6 +13,8 @@
 - `_build/transcribe.py` — Whisper: текст исходника со временем каждого слова.
 - `_build/align.py` — время слов по готовому тексту (SRT, вшитые субтитры), без Whisper.
 - `_build/roughcut.py` — черновой монтаж по плану клипа: чистка пауз, reframe 9:16 по лицу, punch-in на склейках, превью.
+- `_build/ae_export.py` — данные клипа для AE (куски, субтитры, вставки, SFX) → `ae/clip_data.jsxinc`.
+- `_build/ae/arsd_build.jsx` — сборка рилса в After Effects по этим данным (File → Scripts → Run Script File).
 - `_build/tests/make_test_video.py` — синтетический клип для проверки `check_face.py`.
 
 ## Проекты

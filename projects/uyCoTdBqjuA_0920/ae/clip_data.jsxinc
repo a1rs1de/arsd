@@ -1,0 +1,1409 @@
+// Сгенерировано _build/ae_export.py — не править руками, правьте inserts.json / clip.plan.json
+var CLIP = {
+ "name": "uyCoTdBqjuA_0920",
+ "fps": 23.976,
+ "width": 1080,
+ "height": 1920,
+ "duration": 41.835,
+ "source": "source/uyCoTdBqjuA_0920-1120.mp4",
+ "pieces": [
+  {
+   "t_in": 0.0,
+   "t_out": 7.69,
+   "src_in": 65.2,
+   "src_out": 72.89,
+   "anchor": [
+    971.11,
+    360.5
+   ],
+   "position": [
+    540.0,
+    640
+   ],
+   "scale_in": 213.333,
+   "scale_out": 219.732
+  },
+  {
+   "t_in": 7.69,
+   "t_out": 13.97,
+   "src_in": 0.0,
+   "src_out": 6.28,
+   "anchor": [
+    976.65,
+    360.65
+   ],
+   "position": [
+    540.0,
+    640
+   ],
+   "scale_in": 238.934,
+   "scale_out": 246.1
+  },
+  {
+   "t_in": 13.97,
+   "t_out": 22.79,
+   "src_in": 12.84,
+   "src_out": 21.66,
+   "anchor": [
+    975.61,
+    363.4
+   ],
+   "position": [
+    540.0,
+    640
+   ],
+   "scale_in": 213.333,
+   "scale_out": 219.732
+  },
+  {
+   "t_in": 22.79,
+   "t_out": 35.01,
+   "src_in": 25.67,
+   "src_out": 37.89,
+   "anchor": [
+    968.71,
+    364.7
+   ],
+   "position": [
+    540.0,
+    640
+   ],
+   "scale_in": 238.934,
+   "scale_out": 246.1
+  },
+  {
+   "t_in": 35.01,
+   "t_out": 38.425,
+   "src_in": 53.33,
+   "src_out": 56.745,
+   "anchor": [
+    961.5,
+    361.4
+   ],
+   "position": [
+    540.0,
+    640
+   ],
+   "scale_in": 213.333,
+   "scale_out": 219.732
+  },
+  {
+   "t_in": 38.425,
+   "t_out": 41.835,
+   "src_in": 72.89,
+   "src_out": 76.3,
+   "anchor": [
+    971.9,
+    364.5
+   ],
+   "position": [
+    540.0,
+    640
+   ],
+   "scale_in": 238.934,
+   "scale_out": 246.1
+  }
+ ],
+ "subtitles": [
+  {
+   "t_in": 0.112,
+   "t_out": 0.946,
+   "words": [
+    {
+     "w": "Knowing",
+     "t": 0.112
+    },
+    {
+     "w": "when",
+     "t": 0.412
+    },
+    {
+     "w": "to",
+     "t": 0.546
+    },
+    {
+     "w": "switch",
+     "t": 0.676
+    }
+   ]
+  },
+  {
+   "t_in": 0.946,
+   "t_out": 1.316,
+   "words": [
+    {
+     "w": "from",
+     "t": 0.946
+    },
+    {
+     "w": "the",
+     "t": 1.066
+    },
+    {
+     "w": "good",
+     "t": 1.166
+    }
+   ]
+  },
+  {
+   "t_in": 1.316,
+   "t_out": 1.886,
+   "words": [
+    {
+     "w": "to",
+     "t": 1.316
+    },
+    {
+     "w": "the",
+     "t": 1.416
+    },
+    {
+     "w": "great",
+     "t": 1.486
+    }
+   ]
+  },
+  {
+   "t_in": 1.886,
+   "t_out": 2.584,
+   "words": [
+    {
+     "w": "is",
+     "t": 1.886
+    },
+    {
+     "w": "the",
+     "t": 2.017
+    },
+    {
+     "w": "greatest",
+     "t": 2.191
+    }
+   ]
+  },
+  {
+   "t_in": 2.584,
+   "t_out": 3.151,
+   "words": [
+    {
+     "w": "opportunity",
+     "t": 2.584
+    }
+   ]
+  },
+  {
+   "t_in": 3.151,
+   "t_out": 3.901,
+   "words": [
+    {
+     "w": "or",
+     "t": 3.151
+    },
+    {
+     "w": "is",
+     "t": 3.331
+    },
+    {
+     "w": "the",
+     "t": 3.421
+    },
+    {
+     "w": "greatest",
+     "t": 3.491
+    }
+   ]
+  },
+  {
+   "t_in": 3.901,
+   "t_out": 4.47,
+   "words": [
+    {
+     "w": "skill",
+     "t": 3.901,
+     "accent": true
+    },
+    {
+     "w": "that",
+     "t": 4.251
+    },
+    {
+     "w": "you",
+     "t": 4.291
+    }
+   ]
+  },
+  {
+   "t_in": 4.47,
+   "t_out": 5.08,
+   "words": [
+    {
+     "w": "can",
+     "t": 4.47
+    },
+    {
+     "w": "develop",
+     "t": 4.62
+    },
+    {
+     "w": "as",
+     "t": 4.99
+    }
+   ]
+  },
+  {
+   "t_in": 5.08,
+   "t_out": 5.43,
+   "words": [
+    {
+     "w": "a",
+     "t": 5.08
+    },
+    {
+     "w": "man",
+     "t": 5.11
+    },
+    {
+     "w": "in",
+     "t": 5.35
+    }
+   ]
+  },
+  {
+   "t_in": 5.43,
+   "t_out": 5.941,
+   "words": [
+    {
+     "w": "your",
+     "t": 5.43
+    },
+    {
+     "w": "20s",
+     "t": 5.52
+    },
+    {
+     "w": "30s",
+     "t": 5.771
+    }
+   ]
+  },
+  {
+   "t_in": 5.941,
+   "t_out": 6.591,
+   "words": [
+    {
+     "w": "for",
+     "t": 5.941
+    },
+    {
+     "w": "the",
+     "t": 6.091
+    },
+    {
+     "w": "rest",
+     "t": 6.381
+    }
+   ]
+  },
+  {
+   "t_in": 6.591,
+   "t_out": 7.627,
+   "words": [
+    {
+     "w": "of",
+     "t": 6.591
+    },
+    {
+     "w": "your",
+     "t": 7.051
+    },
+    {
+     "w": "career",
+     "t": 7.241
+    }
+   ]
+  },
+  {
+   "t_in": 7.627,
+   "t_out": 8.246,
+   "words": [
+    {
+     "w": "When",
+     "t": 7.627
+    },
+    {
+     "w": "we",
+     "t": 7.782
+    },
+    {
+     "w": "were",
+     "t": 7.937
+    },
+    {
+     "w": "selling",
+     "t": 8.092
+    }
+   ]
+  },
+  {
+   "t_in": 8.246,
+   "t_out": 8.711,
+   "words": [
+    {
+     "w": "booty",
+     "t": 8.246
+    },
+    {
+     "w": "bands",
+     "t": 8.401
+    }
+   ]
+  },
+  {
+   "t_in": 8.711,
+   "t_out": 9.011,
+   "words": [
+    {
+     "w": "and",
+     "t": 8.711
+    },
+    {
+     "w": "what",
+     "t": 8.798
+    }
+   ]
+  },
+  {
+   "t_in": 8.961,
+   "t_out": 9.261,
+   "words": [
+    {
+     "w": "I",
+     "t": 8.961
+    },
+    {
+     "w": "felt",
+     "t": 8.972
+    },
+    {
+     "w": "like",
+     "t": 9.081
+    }
+   ]
+  },
+  {
+   "t_in": 9.211,
+   "t_out": 9.819,
+   "words": [
+    {
+     "w": "we",
+     "t": 9.211
+    },
+    {
+     "w": "plateaued",
+     "t": 9.261
+    }
+   ]
+  },
+  {
+   "t_in": 9.819,
+   "t_out": 10.599,
+   "words": [
+    {
+     "w": "that",
+     "t": 9.819
+    },
+    {
+     "w": "business",
+     "t": 10.309
+    }
+   ]
+  },
+  {
+   "t_in": 10.599,
+   "t_out": 11.213,
+   "words": [
+    {
+     "w": "It's",
+     "t": 10.599
+    },
+    {
+     "w": "because",
+     "t": 10.759
+    },
+    {
+     "w": "we",
+     "t": 11.003
+    },
+    {
+     "w": "were",
+     "t": 11.113
+    }
+   ]
+  },
+  {
+   "t_in": 11.213,
+   "t_out": 12.261,
+   "words": [
+    {
+     "w": "the",
+     "t": 11.213
+    },
+    {
+     "w": "number",
+     "t": 11.303
+    },
+    {
+     "w": "one",
+     "t": 11.512
+    },
+    {
+     "w": "selling",
+     "t": 11.881
+    }
+   ]
+  },
+  {
+   "t_in": 12.261,
+   "t_out": 13.109,
+   "words": [
+    {
+     "w": "booty",
+     "t": 12.261
+    },
+    {
+     "w": "band",
+     "t": 12.551
+    },
+    {
+     "w": "business",
+     "t": 13.061
+    }
+   ]
+  },
+  {
+   "t_in": 13.109,
+   "t_out": 14.177,
+   "words": [
+    {
+     "w": "in",
+     "t": 13.109
+    },
+    {
+     "w": "America",
+     "t": 13.329
+    }
+   ]
+  },
+  {
+   "t_in": 14.177,
+   "t_out": 14.817,
+   "words": [
+    {
+     "w": "It",
+     "t": 14.177
+    },
+    {
+     "w": "was",
+     "t": 14.277
+    },
+    {
+     "w": "time",
+     "t": 14.447
+    }
+   ]
+  },
+  {
+   "t_in": 14.817,
+   "t_out": 15.259,
+   "words": [
+    {
+     "w": "to",
+     "t": 14.817
+    },
+    {
+     "w": "move",
+     "t": 14.927,
+     "accent": true
+    },
+    {
+     "w": "on",
+     "t": 15.157
+    }
+   ]
+  },
+  {
+   "t_in": 15.259,
+   "t_out": 16.491,
+   "words": [
+    {
+     "w": "I",
+     "t": 15.259
+    },
+    {
+     "w": "had",
+     "t": 15.431
+    },
+    {
+     "w": "logical",
+     "t": 15.631
+    },
+    {
+     "w": "data",
+     "t": 16.171
+    }
+   ]
+  },
+  {
+   "t_in": 16.491,
+   "t_out": 17.101,
+   "words": [
+    {
+     "w": "in",
+     "t": 16.491
+    },
+    {
+     "w": "front",
+     "t": 16.651
+    },
+    {
+     "w": "of",
+     "t": 16.881
+    },
+    {
+     "w": "me",
+     "t": 16.941
+    }
+   ]
+  },
+  {
+   "t_in": 17.101,
+   "t_out": 18.276,
+   "words": [
+    {
+     "w": "that",
+     "t": 17.101
+    },
+    {
+     "w": "this",
+     "t": 17.556
+    },
+    {
+     "w": "could",
+     "t": 17.776
+    },
+    {
+     "w": "not",
+     "t": 17.936
+    }
+   ]
+  },
+  {
+   "t_in": 18.276,
+   "t_out": 19.141,
+   "words": [
+    {
+     "w": "scale",
+     "t": 18.276
+    },
+    {
+     "w": "as",
+     "t": 18.816
+    },
+    {
+     "w": "fast",
+     "t": 18.838
+    }
+   ]
+  },
+  {
+   "t_in": 19.141,
+   "t_out": 19.821,
+   "words": [
+    {
+     "w": "as",
+     "t": 19.141
+    },
+    {
+     "w": "I",
+     "t": 19.421
+    },
+    {
+     "w": "would",
+     "t": 19.481
+    },
+    {
+     "w": "like",
+     "t": 19.631
+    }
+   ]
+  },
+  {
+   "t_in": 19.821,
+   "t_out": 20.561,
+   "words": [
+    {
+     "w": "it",
+     "t": 19.821
+    },
+    {
+     "w": "to",
+     "t": 19.901
+    }
+   ]
+  },
+  {
+   "t_in": 20.561,
+   "t_out": 20.872,
+   "words": [
+    {
+     "w": "and",
+     "t": 20.561
+    },
+    {
+     "w": "there",
+     "t": 20.65
+    },
+    {
+     "w": "was",
+     "t": 20.783
+    }
+   ]
+  },
+  {
+   "t_in": 20.872,
+   "t_out": 21.404,
+   "words": [
+    {
+     "w": "a",
+     "t": 20.872
+    },
+    {
+     "w": "greater",
+     "t": 20.938
+    },
+    {
+     "w": "opportunity",
+     "t": 21.116
+    }
+   ]
+  },
+  {
+   "t_in": 21.404,
+   "t_out": 22.214,
+   "words": [
+    {
+     "w": "such",
+     "t": 21.404
+    },
+    {
+     "w": "as",
+     "t": 21.474
+    },
+    {
+     "w": "greens",
+     "t": 21.544
+    },
+    {
+     "w": "powders",
+     "t": 21.854
+    }
+   ]
+  },
+  {
+   "t_in": 22.214,
+   "t_out": 22.916,
+   "words": [
+    {
+     "w": "or",
+     "t": 22.214
+    },
+    {
+     "w": "beverage",
+     "t": 22.334
+    }
+   ]
+  },
+  {
+   "t_in": 22.916,
+   "t_out": 23.497,
+   "words": [
+    {
+     "w": "So",
+     "t": 22.916
+    },
+    {
+     "w": "if",
+     "t": 23.041
+    },
+    {
+     "w": "I",
+     "t": 23.165
+    },
+    {
+     "w": "just",
+     "t": 23.29
+    }
+   ]
+  },
+  {
+   "t_in": 23.497,
+   "t_out": 24.287,
+   "words": [
+    {
+     "w": "look",
+     "t": 23.497
+    },
+    {
+     "w": "at",
+     "t": 23.705
+    },
+    {
+     "w": "the",
+     "t": 23.83
+    },
+    {
+     "w": "Greens",
+     "t": 23.996
+    }
+   ]
+  },
+  {
+   "t_in": 24.287,
+   "t_out": 24.702,
+   "words": [
+    {
+     "w": "category",
+     "t": 24.287
+    }
+   ]
+  },
+  {
+   "t_in": 24.702,
+   "t_out": 25.782,
+   "words": [
+    {
+     "w": "total",
+     "t": 24.702
+    },
+    {
+     "w": "addressable",
+     "t": 25.372
+    }
+   ]
+  },
+  {
+   "t_in": 25.782,
+   "t_out": 26.189,
+   "words": [
+    {
+     "w": "market",
+     "t": 25.782
+    }
+   ]
+  },
+  {
+   "t_in": 26.189,
+   "t_out": 27.079,
+   "words": [
+    {
+     "w": "I",
+     "t": 26.189
+    },
+    {
+     "w": "see",
+     "t": 26.339
+    },
+    {
+     "w": "can't",
+     "t": 26.659
+    },
+    {
+     "w": "really",
+     "t": 26.919
+    }
+   ]
+  },
+  {
+   "t_in": 27.079,
+   "t_out": 27.723,
+   "words": [
+    {
+     "w": "get",
+     "t": 27.079
+    },
+    {
+     "w": "larger",
+     "t": 27.239
+    },
+    {
+     "w": "than",
+     "t": 27.569
+    }
+   ]
+  },
+  {
+   "t_in": 27.723,
+   "t_out": 28.307,
+   "words": [
+    {
+     "w": "a",
+     "t": 27.723
+    },
+    {
+     "w": "quarter",
+     "t": 27.815
+    },
+    {
+     "w": "billion",
+     "t": 28.061
+    }
+   ]
+  },
+  {
+   "t_in": 28.307,
+   "t_out": 28.83,
+   "words": [
+    {
+     "w": "dollars",
+     "t": 28.307
+    },
+    {
+     "w": "a",
+     "t": 28.553
+    },
+    {
+     "w": "year",
+     "t": 28.645
+    }
+   ]
+  },
+  {
+   "t_in": 28.83,
+   "t_out": 29.436,
+   "words": [
+    {
+     "w": "I",
+     "t": 28.83
+    },
+    {
+     "w": "look",
+     "t": 29.226
+    },
+    {
+     "w": "at",
+     "t": 29.376
+    }
+   ]
+  },
+  {
+   "t_in": 29.436,
+   "t_out": 30.336,
+   "words": [
+    {
+     "w": "the",
+     "t": 29.436
+    },
+    {
+     "w": "energy",
+     "t": 29.566
+    },
+    {
+     "w": "drink",
+     "t": 29.896
+    }
+   ]
+  },
+  {
+   "t_in": 30.336,
+   "t_out": 30.8,
+   "words": [
+    {
+     "w": "market",
+     "t": 30.336
+    },
+    {
+     "w": "and",
+     "t": 30.507
+    },
+    {
+     "w": "I",
+     "t": 30.605
+    },
+    {
+     "w": "look",
+     "t": 30.678
+    }
+   ]
+  },
+  {
+   "t_in": 30.8,
+   "t_out": 32.184,
+   "words": [
+    {
+     "w": "at",
+     "t": 30.8
+    },
+    {
+     "w": "multi",
+     "t": 30.873
+    },
+    {
+     "w": "ten",
+     "t": 31.842
+    }
+   ]
+  },
+  {
+   "t_in": 32.184,
+   "t_out": 33.533,
+   "words": [
+    {
+     "w": "multi",
+     "t": 32.184
+    },
+    {
+     "w": "deca",
+     "t": 32.696
+    },
+    {
+     "w": "billion",
+     "t": 33.123
+    }
+   ]
+  },
+  {
+   "t_in": 33.533,
+   "t_out": 34.323,
+   "words": [
+    {
+     "w": "dollar",
+     "t": 33.533
+    },
+    {
+     "w": "opportunity",
+     "t": 33.843
+    }
+   ]
+  },
+  {
+   "t_in": 34.323,
+   "t_out": 35.179,
+   "words": [
+    {
+     "w": "to",
+     "t": 34.323
+    },
+    {
+     "w": "go",
+     "t": 34.393
+    },
+    {
+     "w": "after",
+     "t": 34.553
+    }
+   ]
+  },
+  {
+   "t_in": 35.179,
+   "t_out": 36.681,
+   "words": [
+    {
+     "w": "That's",
+     "t": 35.179
+    },
+    {
+     "w": "why",
+     "t": 35.827
+    },
+    {
+     "w": "I",
+     "t": 36.209
+    },
+    {
+     "w": "move",
+     "t": 36.401
+    }
+   ]
+  },
+  {
+   "t_in": 36.681,
+   "t_out": 37.571,
+   "words": [
+    {
+     "w": "on",
+     "t": 36.681
+    },
+    {
+     "w": "to",
+     "t": 37.061
+    },
+    {
+     "w": "larger",
+     "t": 37.251,
+     "accent": true
+    }
+   ]
+  },
+  {
+   "t_in": 37.571,
+   "t_out": 38.362,
+   "words": [
+    {
+     "w": "challenges",
+     "t": 37.571
+    }
+   ]
+  },
+  {
+   "t_in": 38.362,
+   "t_out": 39.318,
+   "words": [
+    {
+     "w": "and",
+     "t": 38.362
+    },
+    {
+     "w": "I",
+     "t": 38.608
+    },
+    {
+     "w": "continue",
+     "t": 38.708
+    }
+   ]
+  },
+  {
+   "t_in": 39.318,
+   "t_out": 40.028,
+   "words": [
+    {
+     "w": "to",
+     "t": 39.318
+    },
+    {
+     "w": "practice",
+     "t": 39.458
+    }
+   ]
+  },
+  {
+   "t_in": 40.028,
+   "t_out": 40.512,
+   "words": [
+    {
+     "w": "that",
+     "t": 40.028
+    },
+    {
+     "w": "muscle",
+     "t": 40.208
+    },
+    {
+     "w": "as",
+     "t": 40.484
+    }
+   ]
+  },
+  {
+   "t_in": 40.512,
+   "t_out": 41.835,
+   "words": [
+    {
+     "w": "I",
+     "t": 40.512
+    },
+    {
+     "w": "age",
+     "t": 41.34,
+     "accent": true
+    }
+   ]
+  }
+ ],
+ "headline": {
+  "lines": [
+   "From good",
+   "to great"
+  ],
+  "from": 0.1,
+  "to": 3.0,
+  "y": 300
+ },
+ "inserts": [
+  {
+   "id": "I1",
+   "template": "V5_object",
+   "image": "assets/images/img01_bands.png",
+   "lead_in": "we were selling",
+   "hero": "Booty bands",
+   "small": "Resistance bands for glutes. Our first business.",
+   "t_in": 8.109,
+   "t_out": 10.109
+  },
+  {
+   "id": "I2",
+   "template": "V1_number",
+   "image": "assets/images/img02_usa.png",
+   "lead_in": "the number",
+   "hero": "#1",
+   "sub": "booty band business in America",
+   "t_in": 11.266,
+   "t_out": 13.866
+  },
+  {
+   "id": "I3",
+   "template": "V8_chart",
+   "lead_in": "logical data",
+   "hero": "Plateau",
+   "small": "This could not scale as fast as I would like it to.",
+   "t_in": 15.594,
+   "t_out": 18.494
+  },
+  {
+   "id": "I4",
+   "template": "V3_list",
+   "image": "assets/images/img03_greens.png",
+   "items": [
+    {
+     "text": "Greens",
+     "t": 21.524
+    },
+    {
+     "text": "Powders",
+     "t": 21.834
+    },
+    {
+     "text": "Beverage",
+     "t": 22.314
+    }
+   ],
+   "t_in": 21.357,
+   "t_out": 22.957
+  },
+  {
+   "id": "I5",
+   "template": "V1_counter",
+   "image": "assets/images/img04_money.png",
+   "lead_in": "greens category",
+   "prefix": "$",
+   "count_to": 250,
+   "suffix": "M",
+   "sub": "per year. Total addressable market",
+   "count_from_word": "can't",
+   "count_to_word": "billion",
+   "t_in": 26.202,
+   "t_out": 28.902,
+   "count_t": [
+    26.722,
+    28.37
+   ]
+  },
+  {
+   "id": "I6",
+   "template": "V9_compare",
+   "left": {
+    "label": "Greens",
+    "value": "$250M",
+    "image": "assets/images/img03_greens.png"
+   },
+   "right": {
+    "label": "Energy drinks",
+    "value": "$10B+",
+    "image": "assets/images/img05_can.png",
+    "at": "multi",
+    "t": 30.853
+   },
+   "t_in": 30.299,
+   "t_out": 33.499
+  },
+  {
+   "id": "I7",
+   "template": "V2_thesis",
+   "image": "assets/images/img06_brain.png",
+   "lead_in": "practice that",
+   "hero": "Muscle",
+   "small": "Knowing when to switch from the good to the great.",
+   "t_in": 38.621,
+   "t_out": 40.521
+  }
+ ],
+ "sfx": [
+  {
+   "t": 0.1,
+   "kind": "hit"
+  },
+  {
+   "t": 3.922,
+   "kind": "pop"
+  },
+  {
+   "t": 8.109,
+   "kind": "swish"
+  },
+  {
+   "t": 8.409,
+   "kind": "pop"
+  },
+  {
+   "t": 9.989,
+   "kind": "whoosh"
+  },
+  {
+   "t": 11.266,
+   "kind": "swish"
+  },
+  {
+   "t": 11.566,
+   "kind": "hit"
+  },
+  {
+   "t": 13.746,
+   "kind": "whoosh"
+  },
+  {
+   "t": 15.594,
+   "kind": "swish"
+  },
+  {
+   "t": 15.894,
+   "kind": "pop"
+  },
+  {
+   "t": 18.374,
+   "kind": "whoosh"
+  },
+  {
+   "t": 21.357,
+   "kind": "swish"
+  },
+  {
+   "t": 21.524,
+   "kind": "tick"
+  },
+  {
+   "t": 22.837,
+   "kind": "whoosh"
+  },
+  {
+   "t": 26.202,
+   "kind": "swish"
+  },
+  {
+   "t": 26.722,
+   "kind": "tick"
+  },
+  {
+   "t": 28.37,
+   "kind": "hit"
+  },
+  {
+   "t": 28.782,
+   "kind": "whoosh"
+  },
+  {
+   "t": 30.299,
+   "kind": "swish"
+  },
+  {
+   "t": 30.853,
+   "kind": "swish"
+  },
+  {
+   "t": 33.379,
+   "kind": "whoosh"
+  },
+  {
+   "t": 37.272,
+   "kind": "pop"
+  },
+  {
+   "t": 38.621,
+   "kind": "swish"
+  },
+  {
+   "t": 38.921,
+   "kind": "pop"
+  },
+  {
+   "t": 40.401,
+   "kind": "whoosh"
+  },
+  {
+   "t": 41.361,
+   "kind": "pop"
+  }
+ ],
+ "music": "assets/music",
+ "style": {
+  "paper": [
+   253,
+   252,
+   245
+  ],
+  "white": [
+   255,
+   255,
+   255
+  ],
+  "ink": [
+   17,
+   17,
+   17
+  ],
+  "grey_line": [
+   189,
+   189,
+   189
+  ],
+  "grey_text": [
+   107,
+   107,
+   107
+  ],
+  "accent": [
+   253,
+   252,
+   245
+  ],
+  "sub_y": 1250,
+  "sub_size": 68,
+  "accent_scale": 1.12,
+  "headline_size": 130,
+  "fonts": {
+   "display": [
+    "Coolvetica",
+    "Regular"
+   ],
+   "display_italic": [
+    "Coolvetica",
+    "Italic"
+   ],
+   "sub": [
+    "Montserrat",
+    "Bold"
+   ],
+   "light": [
+    "Montserrat",
+    "Light"
+   ],
+   "medium": [
+    "Montserrat",
+    "Medium"
+   ],
+   "accent": [
+    "Playfair Display",
+    "Italic"
+   ]
+  },
+  "T1": 0.2833333333333333,
+  "T2": 0.43333333333333335,
+  "T3_letter": 0.08333333333333333,
+  "T5_step": 0.4666666666666667,
+  "T6": 0.15,
+  "card_in": 0.36666666666666664,
+  "defocus": 0.23333333333333334,
+  "lead_in_delay": 0.13333333333333333,
+  "sfx_db": -8,
+  "music_db": -20
+ }
+};

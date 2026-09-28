@@ -10,11 +10,11 @@
 | 1. Выбор момента (3.1) | ✅ `clip.plan.json` |
 | 2. Чистка речи (3.2) | ✅ паузы > 0,3 с вырезаны, `work/edit.json` |
 | 3. Reframe (4.1) | ✅ глаза y≈640, подбородок ≤ 965, вшитые субтитры исходника обрезаны; `check_face.py` — 0 замечаний |
-| 4. Цвет (4.3) | ⏳ на сборке |
-| 5. Звук (12) | ⏳ |
-| 6. Субтитры (6) | ⏳ текст готов, тайминг слов приблизительный (см. ниже) |
-| 7. Вставки (8–9) | ⏳ ждём материалы — [ASSETS.md](ASSETS.md) |
-| 8–10. Переходы, SFX, проверка, экспорт | ⏳ |
+| 4. Цвет (4.3) | ✅ в AE-скрипте (контраст +12, вибранс +8 на спикере) |
+| 5. Звук (12) | ⏳ SFX/музыка — ждём файлы; громкость −14 LUFS — после рендера |
+| 6. Субтитры (6) | ✅ английские, в AE-скрипте; время слов местами приблизительное (см. ниже) |
+| 7. Вставки (8–9) | ✅ 7 карточек S2 ч/б в AE-скрипте, картинки — заглушки до получения [ASSETS.md](ASSETS.md) |
+| 8–10. Переходы, SFX, проверка, экспорт | ✅ расфокус и вход карточек; SFX по событиям; очередь рендера |
 
 ## Момент
 
@@ -49,9 +49,25 @@
 
 Whisper в облачной сессии недоступен (HuggingFace закрыт сетевой политикой). Текст снят OCR с вшитых субтитров исходника (`work/burned_subs.json` → вычитан в `work/phrases.json`), время слов — выравнивание pocketsphinx (`_build/align.py`, `work/words.json`). Время фраз надёжное, **время отдельных слов местами приблизительное** — перед финалом прогнать `_build/transcribe.py` (Whisper) на ПК или сдвинуть вручную.
 
+## Сборка в After Effects
+
+1. Шрифты установлены в систему: Coolvetica (Regular/Italic), Montserrat (Light/Medium/Bold), Playfair Display (Italic) — последние два бесплатно на fonts.google.com.
+2. Исходник лежит в `source/uyCoTdBqjuA_0920-1120.mp4`, материалы — в `assets/` (имена из [ASSETS.md](ASSETS.md)).
+3. AE → File → Scripts → Run Script File… → `_build/ae/arsd_build.jsx` → выбрать `projects/uyCoTdBqjuA_0920/ae/clip_data.jsxinc`.
+4. Скрипт соберёт в папке проекта `arsd_uyCoTdBqjuA_0920`: `SPEAKER`, `SUBTITLES`, вставки `I1…I7`, главную `REEL_uyCoTdBqjuA_0920`, поставит её в очередь рендера (H.264) и сохранит `ae/uyCoTdBqjuA_0920.aep`. В конце — список, чего не хватило (шрифты, картинки, SFX).
+5. После рендера — громкость и проверка лица:
+
+```
+ffmpeg -i renders/REEL_uyCoTdBqjuA_0920.mp4 -af loudnorm=I=-14:TP=-1:LRA=11 -c:v copy -c:a aac -b:a 320k -ar 48000 renders/REEL_final.mp4
+_build/.venv/bin/python _build/check_face.py projects/uyCoTdBqjuA_0920/renders/REEL_final.mp4
+```
+
+Правки текста/таймингов — в `inserts.json` (вставки, акценты, заголовок) и `clip.plan.json` (нарезка), затем `_build/ae_export.py projects/uyCoTdBqjuA_0920` и заново скрипт в AE (в новый проект, чтобы не дублировать).
+
 ## Как пересобрать
 
 ```
 _build/.venv/bin/python _build/roughcut.py projects/uyCoTdBqjuA_0920/clip.plan.json --render
 _build/.venv/bin/python _build/check_face.py projects/uyCoTdBqjuA_0920/renders/rough_preview.mp4
+_build/.venv/bin/python _build/ae_export.py projects/uyCoTdBqjuA_0920
 ```

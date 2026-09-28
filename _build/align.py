@@ -119,6 +119,19 @@ def main() -> int:
                 k = nxt[0] - i + 1
                 step = max(0.05, (nxt[1] - prev_e) / k)
                 w["start"], w["end"] = prev_e, prev_e + step
+        # Вырожденное выравнивание: много слов по 30–50 мс подряд = модель «сжала» фразу,
+        # не найдя её в звуке. Тогда раскладываем слова по фразе пропорционально длине слова.
+        short = sum(1 for w in placed if w["end"] - w["start"] <= 0.05)
+        if n >= 3 and short / n >= 0.4:
+            a0, b0 = ph["start"], ph["end"]
+            weights = [max(2, len(w["w"])) + 1 for w in placed]
+            tot, acc = sum(weights), 0.0
+            for w, wt in zip(placed, weights):
+                w["start"] = a0 + (b0 - a0) * acc / tot
+                acc += wt
+                w["end"] = a0 + (b0 - a0) * acc / tot
+                w["approx"] = True
+            print(f"фраза {pi}: выравнивание вырожденное, время слов по пропорции", file=sys.stderr)
         for w in placed:
             w["start"], w["end"], w["phrase"] = round(w["start"], 3), round(w["end"], 3), pi
             words.append(w)
@@ -130,6 +143,26 @@ def main() -> int:
             prev["end"] = min(prev["end"], mid) if mid > prev["start"] else prev["end"]
             w["start"] = max(mid, prev["end"])
             w["end"] = max(w["end"], w["start"] + 0.04)
+
+    # Вырожденные фразы после склейки окон (слова по 40 мс подряд) — раскладываем по пропорции
+    # в промежутке между соседними фразами.
+    for pi, ph in enumerate(phrases):
+        idx = [i for i, w in enumerate(words) if w["phrase"] == pi]
+        if len(idx) < 3:
+            continue
+        if sum(1 for i in idx if words[i]["end"] - words[i]["start"] <= 0.05) / len(idx) < 0.4:
+            continue
+        a0 = max(ph["start"], words[idx[0] - 1]["end"] if idx[0] > 0 else 0.0)
+        b0 = words[idx[-1] + 1]["start"] if idx[-1] + 1 < len(words) else ph["end"]
+        b0 = max(b0, a0 + 0.1 * len(idx))
+        weights = [max(2, len(words[i]["w"])) + 1 for i in idx]
+        tot, acc = sum(weights), 0.0
+        for i, wt in zip(idx, weights):
+            words[i]["start"] = round(a0 + (b0 - a0) * acc / tot, 3)
+            acc += wt
+            words[i]["end"] = round(a0 + (b0 - a0) * acc / tot, 3)
+            words[i]["approx"] = True
+        print(f"фраза {pi}: слова сжаты выравниванием — время по пропорции {a0:.2f}–{b0:.2f}", file=sys.stderr)
 
     out = {"media": str(args.media), "engine": "pocketsphinx-align", "words": words, "gaps": gaps}
     args.out.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")

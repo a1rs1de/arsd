@@ -1,0 +1,129 @@
+{
+  "_comment": "Графика клипа (гайд 5–9, 12.4). Время вставок привязано к словам (at: слово, n: какое по счёту вхождение), поэтому переживает перенарезку. Время в секундах клипа считает _build/ae_export.py.",
+  "style": "S2_bw",
+  "headline": {
+    "lines": [
+      "From good",
+      "to great"
+    ],
+    "from": 0.1,
+    "to": 3.0,
+    "y": 300
+  },
+  "accents": [
+    {
+      "at": "skill"
+    },
+    {
+      "at": "move"
+    },
+    {
+      "at": "larger",
+      "n": 2
+    },
+    {
+      "at": "age."
+    }
+  ],
+  "inserts": [
+    {
+      "id": "I1",
+      "template": "V5_object",
+      "at": "booty",
+      "lead": -0.2,
+      "dur": 2.0,
+      "image": "assets/images/img01_bands.png",
+      "lead_in": "we were selling",
+      "hero": "Booty bands",
+      "small": "Resistance bands for glutes. Our first business."
+    },
+    {
+      "id": "I2",
+      "template": "V1_number",
+      "at": "number",
+      "lead": -0.1,
+      "dur": 2.6,
+      "image": "assets/images/img02_usa.png",
+      "lead_in": "the number",
+      "hero": "#1",
+      "sub": "booty band business in America"
+    },
+    {
+      "id": "I3",
+      "template": "V8_chart",
+      "at": "logical",
+      "lead": -0.1,
+      "dur": 2.9,
+      "lead_in": "logical data",
+      "hero": "Plateau",
+      "small": "This could not scale as fast as I would like it to."
+    },
+    {
+      "id": "I4",
+      "template": "V3_list",
+      "at": "greens,",
+      "lead": -0.25,
+      "dur": 1.6,
+      "image": "assets/images/img03_greens.png",
+      "items": [
+        {
+          "text": "Greens",
+          "at": "greens,"
+        },
+        {
+          "text": "Powders",
+          "at": "powders,"
+        },
+        {
+          "text": "Beverage",
+          "at": "beverage."
+        }
+      ]
+    },
+    {
+      "id": "I5",
+      "template": "V1_counter",
+      "at": "see",
+      "lead": -0.2,
+      "dur": 2.7,
+      "image": "assets/images/img04_money.png",
+      "lead_in": "greens category",
+      "prefix": "$",
+      "count_to": 250,
+      "suffix": "M",
+      "sub": "per year. Total addressable market",
+      "count_from_word": "can't",
+      "count_to_word": "billion"
+    },
+    {
+      "id": "I6",
+      "template": "V9_compare",
+      "at": "market",
+      "n": 2,
+      "lead": -0.1,
+      "dur": 3.2,
+      "left": {
+        "label": "Greens",
+        "value": "$250M",
+        "image": "assets/images/img03_greens.png"
+      },
+      "right": {
+        "label": "Energy drinks",
+        "value": "$10B+",
+        "image": "assets/images/img05_can.png",
+        "at": "multi"
+      }
+    },
+    {
+      "id": "I7",
+      "template": "V2_thesis",
+      "at": "continue",
+      "lead": -0.15,
+      "dur": 1.9,
+      "image": "assets/images/img06_brain.png",
+      "lead_in": "practice that",
+      "hero": "Muscle",
+      "small": "Knowing when to switch from the good to the great."
+    }
+  ]
+}

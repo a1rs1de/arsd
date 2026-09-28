@@ -47,7 +47,7 @@
 | Файл | Где взять |
 |---|---|
 | `assets/fonts/Coolvetica*.otf` — Regular, Italic, Condensed | Typodermic (у тебя есть лицензия / файлы). **Обязательно** — заголовки и цифры |
-| Montserrat, Playfair Display | скачаю сам (open source) |
+| Montserrat (Light, Medium, Bold), Playfair Display (Italic) | бесплатно: fonts.google.com — установить в систему на ПК с AE |
 
 ## 5. Звук
 
