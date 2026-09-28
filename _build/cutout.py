@@ -30,6 +30,9 @@ def main() -> int:
     ap.add_argument("--gradient", action="store_true",
                     help="фон с градиентом (тень от студийного света): порог по строкам от яркости краёв")
     ap.add_argument("--erode", type=int, default=0, help="срезать N px края маски (убрать светлый ореол)")
+    ap.add_argument("--poly", nargs="*", default=[],
+                    help="добавить в объект многоугольник «x,y;x,y;…» в пикселях исходника (белая бандероль, наклейка)")
+    ap.add_argument("--bw", action="store_true", help="сразу перевести в ч/б")
     ap.add_argument("--pad", type=int, default=24)
     args = ap.parse_args()
 
@@ -39,12 +42,17 @@ def main() -> int:
         return 2
     if im.ndim == 2:
         im = cv2.cvtColor(im, cv2.COLOR_GRAY2BGR)
-    if im.shape[2] == 4:  # уже с альфой — кладём на белый
+    src_alpha = None
+    if im.shape[2] == 4:  # уже с альфой — кладём на белый; если фон прозрачный — берём готовую маску
+        if (im[:, :, 3] < 10).mean() > 0.02:
+            src_alpha = im[:, :, 3].copy()
         a = im[:, :, 3:4].astype(np.float32) / 255
         im = (im[:, :, :3].astype(np.float32) * a + 255 * (1 - a)).astype(np.uint8)
     h, w = im.shape[:2]
 
     hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
+    if src_alpha is not None:
+        args.white = 256  # фон не ищем
     if args.gradient:
         edge = np.concatenate([hsv[:, :4, 2], hsv[:, -4:, 2]], axis=1).astype(np.float32)
         bgv = np.median(edge, axis=1)
@@ -66,6 +74,9 @@ def main() -> int:
     big = areas.max()
     keep = [i + 1 for i, a in enumerate(areas) if a >= args.keep * big]
     mask = np.isin(lab, keep).astype(np.uint8) * 255
+    for spec in args.poly:
+        pts = np.array([[float(v) for v in pt.split(",")] for pt in spec.split(";")], np.int32)
+        cv2.fillPoly(mask, [pts], 255)
     if args.close:
         k = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (args.close, args.close))
         mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, k)
@@ -100,12 +111,16 @@ def main() -> int:
         im[y0:y1, x0:x1][region] = cv2.GaussianBlur(im[y0:y1, x0:x1], (k, k), 0)[region]
     if args.erode:
         mask = cv2.erode(mask, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * args.erode + 1, 2 * args.erode + 1)))
+    if src_alpha is not None:
+        mask = src_alpha
     # дыры внутри объекта (белые блики, не связанные с краем) уже в маске; сглаживаем край
-    alpha = cv2.GaussianBlur(mask, (3, 3), 0)
+    alpha = mask if src_alpha is not None else cv2.GaussianBlur(mask, (3, 3), 0)
 
     ys, xs = np.where(mask > 0)
     y0, y1 = max(0, ys.min() - args.pad), min(h, ys.max() + args.pad + 1)
     x0, x1 = max(0, xs.min() - args.pad), min(w, xs.max() + args.pad + 1)
+    if args.bw:
+        im = cv2.cvtColor(cv2.cvtColor(im, cv2.COLOR_BGR2GRAY), cv2.COLOR_GRAY2BGR)
     out = np.dstack([im, alpha])[y0:y1, x0:x1]
     cv2.imwrite(args.dst, out)
     print(f"{args.dst}: {out.shape[1]}×{out.shape[0]}, кусков: {len(keep)}")

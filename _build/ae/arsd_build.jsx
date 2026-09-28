@@ -383,6 +383,11 @@
     function numberLayout(comp, ins, isCounter) {
         var cx = W / 2, cy = 655, t0 = 0.1;
         card(comp, cx, cy, 860, 920, { gridY: 820 });
+        if (ins.decor_image) {                                   // монета-декор за объектом (как в референсе)
+            var coin = image(comp, ins.decor_image, cx + 300, 770, 190, 190);
+            anim(P(coin, "op"), t0 + 0.3, t0 + 0.6, 0, 100);
+            smooth(P(coin, "rot"), 0, comp.duration, -15, 20);
+        }
         var obj = image(comp, ins.image, cx, 840, 560, 300);
         anim(P(obj, "op"), t0 + 0.2, t0 + 0.5, 0, 100);
         var lead = placeText(text(comp, ins.lead_in, "light", 38, S.ink), cx, 330, 0);

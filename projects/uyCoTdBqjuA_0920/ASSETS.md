@@ -1,5 +1,7 @@
 # Материалы для рилса
 
+> **Статус:** картинки 1–8 получены и обработаны (вырез фона, ч/б) — `assets/images/`, превью `work/assets_preview.jpg`. Осталось: шрифты, SFX, музыка (по желанию).
+
 Стиль вставок — **S2 белая редакционная карточка, чёрно-белая** (как референс). Вставки занимают ≈16 с из 41 (39 %, гайд 9.1: 30–40 %).
 
 Кладите файлы в `assets/<папка>/` под именами из таблицы (или присылайте в чат — разложу сам).
@@ -15,7 +17,8 @@
 | 20,6–22,2 | greens, powders, or beverage | **V3** список со звёздочками + банка гринс | `img03` |
 | 25,2–28,0 | … a quarter billion dollars a year | **V1** счётчик **$250M / year**, пачка купюр | `img04` |
 | 30,6–33,6 | energy drink … multi-billion opportunity | **V9** сравнение: Greens $250M ↔ Energy drinks $10B+ | `img03`, `img05` |
-| 37,7–39,7 | practice that muscle as I age | **V2** тезис: «practice that / **Muscle**» | `img06` |
+| 35,1–36,9 | That's why I move on to larger challenges | **V5** «I move on to / **Larger** / challenges», горы | `img08` |
+| 38,6–40,3 | practice that muscle as I age | **V2** тезис: «practice that / **Muscle**» | `img06` |
 | 39,7–41,2 | финал | спикер, петля к хуку | — |
 
 ## 1. Изображения — обязательно

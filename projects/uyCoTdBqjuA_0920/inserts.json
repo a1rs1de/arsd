@@ -18,10 +18,6 @@
       "at": "move"
     },
     {
-      "at": "larger",
-      "n": 2
-    },
-    {
       "at": "age."
     }
   ],
@@ -31,7 +27,7 @@
       "template": "V5_object",
       "at": "booty",
       "lead": -0.2,
-      "dur": 2.0,
+      "dur": 1.8,
       "image": "assets/images/img01_bands.png",
       "lead_in": "we were selling",
       "hero": "Booty bands",
@@ -42,7 +38,7 @@
       "template": "V1_number",
       "at": "number",
       "lead": -0.1,
-      "dur": 2.6,
+      "dur": 2.3,
       "image": "assets/images/img02_usa.png",
       "lead_in": "the number",
       "hero": "#1",
@@ -53,7 +49,7 @@
       "template": "V8_chart",
       "at": "logical",
       "lead": -0.1,
-      "dur": 2.9,
+      "dur": 2.5,
       "lead_in": "logical data",
       "hero": "Plateau",
       "small": "This could not scale as fast as I would like it to."
@@ -85,7 +81,7 @@
       "template": "V1_counter",
       "at": "see",
       "lead": -0.2,
-      "dur": 2.7,
+      "dur": 2.4,
       "image": "assets/images/img04_money.png",
       "lead_in": "greens category",
       "prefix": "$",
@@ -93,7 +89,8 @@
       "suffix": "M",
       "sub": "per year. Total addressable market",
       "count_from_word": "can't",
-      "count_to_word": "billion"
+      "count_to_word": "billion",
+      "decor_image": "assets/images/img07_coin.png"
     },
     {
       "id": "I6",
@@ -101,7 +98,7 @@
       "at": "market",
       "n": 2,
       "lead": -0.1,
-      "dur": 3.2,
+      "dur": 2.8,
       "left": {
         "label": "Greens",
         "value": "$250M",
@@ -115,11 +112,23 @@
       }
     },
     {
+      "id": "I8",
+      "template": "V5_object",
+      "at": "That's",
+      "n": 1,
+      "lead": -0.1,
+      "dur": 1.75,
+      "image": "assets/images/img08_mountain.png",
+      "lead_in": "I move on to",
+      "hero": "Larger",
+      "small": "challenges."
+    },
+    {
       "id": "I7",
       "template": "V2_thesis",
       "at": "continue",
       "lead": -0.15,
-      "dur": 1.9,
+      "dur": 1.7,
       "image": "assets/images/img06_brain.png",
       "lead_in": "practice that",
       "hero": "Muscle",
