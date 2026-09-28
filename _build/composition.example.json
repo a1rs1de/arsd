@@ -1,0 +1,18 @@
+{
+  "_comment": "Композиция для check_face.py. Всё, кроме shots, необязательно: по умолчанию значения гайда (раздел 16, face_zone). Без shots склейки ищутся автоматически.",
+  "canvas": { "width": 1080, "height": 1920 },
+  "subtitles": { "top_y": 1200, "bottom_y": 1320 },
+  "face_zone": {
+    "margin_px": 40,
+    "eyes_y": 640,
+    "eyes_tolerance_px": 40,
+    "chin_max_y": 1000,
+    "sample_every_s": 0.5
+  },
+  "shots": [
+    { "id": "A1", "start": 0.0, "end": 4.0, "label": "средний, спикер" },
+    { "id": "A2", "start": 4.0, "end": 7.5, "label": "средний, съехал вниз" },
+    { "id": "A3", "start": 7.5, "end": 11.0, "label": "крупный, punch-in" },
+    { "id": "V1", "start": 11.0, "end": 12.0, "label": "вставка V1" }
+  ]
+}
