@@ -321,7 +321,7 @@ def main() -> int:
             warn.append(f"между {a['id']} и {b['id']} спикера {b['t_in'] - a['t_out']:.2f} с < 1 с — карточки слипаются (18.6)")
     for g in subs:
         if g["t_out"] - g["t_in"] < 0.35 and len(g["words"]) <= 3:
-            warn.append(f"строка «{' '.join(w['w'] for w in g['words'])}» на экране {g['t_out'] - g['t_in']:.2f} с — мелькает (18.4)")
+            warn.append(f"строка «{' '.join(w['w'] for w in g['words'])}» на экране {g['t_out'] - g['t_in']:.2f} с — мелькает (18.3)")
     sfx_dir = proj / "assets" / "sfx"
     for kind in sorted({s_["kind"] for s_ in kept}):
         if not list(sfx_dir.glob(f"{kind}_*.wav")):
