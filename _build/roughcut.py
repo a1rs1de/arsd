@@ -102,6 +102,30 @@ def seg_words(seg: dict, words: list[dict]) -> list[dict]:
     return out
 
 
+def snap_in(t: float, db: np.ndarray, sil: float, reach: float = 0.3) -> float:
+    """Начало куска → назад до настоящей тишины (тихие начала слов «kn-», «h-» не срезаем)."""
+    i = int(round(t * 100))
+    if np.median(db[max(0, i - 1):i + 2]) < sil + 4:  # уже в тишине — не двигаем
+        return t
+    for j in range(i, max(0, i - int(reach * 100)) - 1, -1):
+        if j >= 4 and (db[j - 4:j] < sil).all():
+            return max(0.0, (j - 2) / 100)
+    lo = max(0, i - int(reach * 100))
+    return (lo + int(np.argmin(db[lo:i + 1]))) / 100
+
+
+def snap_out(t: float, db: np.ndarray, sil: float, reach: float = 0.35) -> float:
+    """Конец куска → вперёд до настоящей тишины (тихие окончания «-ca», «-ge» не срезаем)."""
+    i = int(round(t * 100))
+    if np.median(db[max(0, i - 1):i + 2]) < sil + 4:
+        return t
+    for j in range(i, min(len(db) - 4, i + int(reach * 100))):
+        if (db[j:j + 4] < sil).all():
+            return (j + 2) / 100
+    hi = min(len(db), i + int(reach * 100))
+    return (i + int(np.argmin(db[i:hi]))) / 100
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("plan", type=Path)
@@ -123,9 +147,11 @@ def main() -> int:
     track = [r for r in json.loads((proj / plan["face_track"]).read_text()) if "eyes" in r]
     words = json.loads((proj / plan["words"]).read_text(encoding="utf-8"))["words"]
 
-    # 1. Куски без длинных пауз.
+    # 1. Границы — к настоящей тишине; внутри — вырезать паузы > 0,3 с.
+    sil = cut.get("snap_silence_db", -44)
     pieces = []
     for si, seg in enumerate(plan["segments"]):
+        seg["in"], seg["out"] = snap_in(seg["in"], db, sil), snap_out(seg["out"], db, sil)
         for a, b in split_pauses(seg["in"], seg["out"], db, cut.get("silence_db", -40),
                                  cut.get("max_pause_s", 0.3), cut.get("air_s", 0.1)):
             pieces.append({"segment": si, "role": seg.get("role", ""), "src_in": a, "src_out": b})
@@ -182,6 +208,12 @@ def main() -> int:
         print(f"  {p['t_in']:6.2f}–{p['t_out']:6.2f}  src {p['src_in']:6.2f}–{p['src_out']:6.2f}  "
               f"{'punch' if p['punch'] else '100% '}  подбородок y≈{p['face']['chin_canvas_max']}  {p['role']}")
     print(" ".join(w["w"] for w in out_words))
+    print("\nГраницы кусков (дБ на склейке; тише −40 — чисто, громче — может резать звук):")
+    for p in pieces:
+        a, b = int(p["src_in"] * 100), int(p["src_out"] * 100)
+        e_in, e_out = float(np.median(db[max(0, a - 1):a + 2])), float(np.median(db[max(0, b - 1):b + 2]))
+        flag = lambda v: "ok" if v < -40 else "ПРОВЕРИТЬ"
+        print(f"  src {p['src_in']:6.2f} {e_in:5.0f} дБ {flag(e_in):9s} | src {p['src_out']:6.2f} {e_out:5.0f} дБ {flag(e_out)}")
 
     if args.render:
         render(proj, src, edit, fps)

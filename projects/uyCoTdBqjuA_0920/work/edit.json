@@ -5,56 +5,56 @@
   1080,
   1920
  ],
- "duration": 41.16,
+ "duration": 41.835,
  "pieces": [
   {
    "segment": 0,
    "role": "хук",
-   "src_in": 65.28,
-   "src_out": 72.58,
+   "src_in": 65.2,
+   "src_out": 72.89,
    "t_in": 0.0,
-   "t_out": 7.3,
+   "t_out": 7.69,
    "punch": false,
    "crop_start": [
     717.98,
-    60.2,
+    60.5,
     506.25,
     900.0
    ],
    "crop_end": [
     725.35,
-    68.94,
+    69.24,
     491.5,
     873.79
    ],
    "face": {
-    "eyes_src": 360.2,
+    "eyes_src": 360.5,
     "chin_src": 485.8,
-    "chin_canvas_max": 916
+    "chin_canvas_max": 915
    }
   },
   {
    "segment": 1,
    "role": "контекст",
    "src_in": 0.0,
-   "src_out": 6.08,
-   "t_in": 7.3,
-   "t_out": 13.38,
+   "src_out": 6.28,
+   "t_in": 7.69,
+   "t_out": 13.97,
    "punch": true,
    "crop_start": [
-    751.0,
-    92.84,
+    750.65,
+    92.79,
     452.01,
     803.57
    ],
    "crop_end": [
-    757.58,
-    100.64,
+    757.23,
+    100.59,
     438.84,
     780.17
    ],
    "face": {
-    "eyes_src": 360.7,
+    "eyes_src": 360.6,
     "chin_src": 492.7,
     "chin_canvas_max": 965
    }
@@ -62,1168 +62,1116 @@
   {
    "segment": 2,
    "role": "суть",
-   "src_in": 12.85,
-   "src_out": 16.13,
-   "t_in": 13.38,
-   "t_out": 16.66,
+   "src_in": 12.84,
+   "src_out": 21.66,
+   "t_in": 13.97,
+   "t_out": 22.79,
    "punch": false,
    "crop_start": [
-    722.56,
-    65.3,
-    506.08,
-    899.7
+    722.48,
+    63.4,
+    506.25,
+    900.0
    ],
    "crop_end": [
     729.85,
-    73.94,
+    72.14,
     491.5,
     873.79
    ],
    "face": {
-    "eyes_src": 365.2,
+    "eyes_src": 363.4,
     "chin_src": 493.3,
-    "chin_canvas_max": 921
-   }
-  },
-  {
-   "segment": 2,
-   "role": "суть",
-   "src_in": 16.26,
-   "src_out": 21.63,
-   "t_in": 16.66,
-   "t_out": 22.03,
-   "punch": true,
-   "crop_start": [
-    749.85,
-    93.69,
-    452.01,
-    803.57
-   ],
-   "crop_end": [
-    756.43,
-    101.49,
-    438.84,
-    780.17
-   ],
-   "face": {
-    "eyes_src": 361.5,
-    "chin_src": 482.8,
-    "chin_canvas_max": 938
+    "chin_canvas_max": 925
    }
   },
   {
    "segment": 3,
    "role": "суть",
-   "src_in": 25.7,
-   "src_out": 37.86,
-   "t_in": 22.03,
-   "t_out": 34.19,
-   "punch": false,
+   "src_in": 25.67,
+   "src_out": 37.89,
+   "t_in": 22.79,
+   "t_out": 35.01,
+   "punch": true,
    "crop_start": [
-    715.58,
-    64.7,
-    506.25,
-    900.0
+    742.7,
+    96.84,
+    452.01,
+    803.57
    ],
    "crop_end": [
-    722.95,
-    73.44,
-    491.5,
-    873.79
+    749.28,
+    104.64,
+    438.84,
+    780.17
    ],
    "face": {
     "eyes_src": 364.7,
     "chin_src": 486.5,
-    "chin_canvas_max": 908
+    "chin_canvas_max": 940
    }
   },
   {
    "segment": 4,
    "role": "вывод",
    "src_in": 53.33,
-   "src_out": 53.72,
-   "t_in": 34.19,
-   "t_out": 34.58,
-   "punch": true,
+   "src_out": 56.745,
+   "t_in": 35.01,
+   "t_out": 38.425,
+   "punch": false,
    "crop_start": [
-    737.7,
-    99.94,
-    452.01,
-    803.57
+    708.38,
+    61.4,
+    506.25,
+    900.0
    ],
    "crop_end": [
-    744.28,
-    107.74,
-    438.84,
-    780.17
+    715.75,
+    70.14,
+    491.5,
+    873.79
    ],
    "face": {
-    "eyes_src": 367.8,
-    "chin_src": 475.8,
-    "chin_canvas_max": 906
-   }
-  },
-  {
-   "segment": 4,
-   "role": "вывод",
-   "src_in": 53.84,
-   "src_out": 56.72,
-   "t_in": 34.58,
-   "t_out": 37.46,
-   "punch": true,
-   "crop_start": [
-    734.6,
-    93.34,
-    452.01,
-    803.57
-   ],
-   "crop_end": [
-    741.18,
-    101.14,
-    438.84,
-    780.17
-   ],
-   "face": {
-    "eyes_src": 361.2,
+    "eyes_src": 361.4,
     "chin_src": 483.6,
-    "chin_canvas_max": 941
+    "chin_canvas_max": 909
    }
   },
   {
    "segment": 5,
    "role": "вывод",
-   "src_in": 72.6,
+   "src_in": 72.89,
    "src_out": 76.3,
-   "t_in": 37.46,
-   "t_out": 41.16,
-   "punch": false,
+   "t_in": 38.425,
+   "t_out": 41.835,
+   "punch": true,
    "crop_start": [
-    718.22,
-    64.2,
-    506.25,
-    900.0
+    745.9,
+    96.64,
+    452.01,
+    803.57
    ],
    "crop_end": [
-    725.6,
-    72.94,
-    491.5,
-    873.79
+    752.48,
+    104.44,
+    438.84,
+    780.17
    ],
    "face": {
-    "eyes_src": 364.2,
+    "eyes_src": 364.5,
     "chin_src": 493.2,
-    "chin_canvas_max": 923
+    "chin_canvas_max": 957
    }
   }
  ],
  "words": [
   {
    "w": "Knowing",
-   "start": 0.095,
-   "end": 0.395,
+   "start": 0.175,
+   "end": 0.475,
    "segment": 0
   },
   {
    "w": "when",
-   "start": 0.395,
-   "end": 0.529,
+   "start": 0.475,
+   "end": 0.609,
    "segment": 0
   },
   {
    "w": "to",
-   "start": 0.529,
-   "end": 0.659,
+   "start": 0.609,
+   "end": 0.739,
    "segment": 0
   },
   {
    "w": "switch",
-   "start": 0.659,
-   "end": 0.929,
+   "start": 0.739,
+   "end": 1.009,
    "segment": 0
   },
   {
    "w": "from",
-   "start": 0.929,
-   "end": 1.049,
+   "start": 1.009,
+   "end": 1.129,
    "segment": 0
   },
   {
    "w": "the",
-   "start": 1.049,
-   "end": 1.149,
+   "start": 1.129,
+   "end": 1.229,
    "segment": 0
   },
   {
    "w": "good",
-   "start": 1.149,
-   "end": 1.299,
+   "start": 1.229,
+   "end": 1.379,
    "segment": 0
   },
   {
    "w": "to",
-   "start": 1.299,
-   "end": 1.399,
+   "start": 1.379,
+   "end": 1.479,
    "segment": 0
   },
   {
    "w": "the",
-   "start": 1.399,
-   "end": 1.469,
+   "start": 1.479,
+   "end": 1.549,
    "segment": 0
   },
   {
    "w": "great",
-   "start": 1.469,
-   "end": 1.869,
-   "segment": 0
-  },
-  {
-   "w": "is",
-   "start": 1.869,
-   "end": 1.909,
-   "segment": 0
-  },
-  {
-   "w": "the",
-   "start": 1.909,
+   "start": 1.549,
    "end": 1.949,
    "segment": 0
   },
   {
-   "w": "greatest",
+   "w": "is",
    "start": 1.949,
-   "end": 1.982,
+   "end": 1.989,
+   "segment": 0
+  },
+  {
+   "w": "the",
+   "start": 1.989,
+   "end": 2.029,
+   "segment": 0
+  },
+  {
+   "w": "greatest",
+   "start": 2.029,
+   "end": 2.062,
    "segment": 0
   },
   {
    "w": "opportunity,",
-   "start": 1.982,
-   "end": 2.994,
+   "start": 2.062,
+   "end": 3.074,
    "segment": 0
   },
   {
    "w": "or",
-   "start": 3.134,
-   "end": 3.314,
+   "start": 3.214,
+   "end": 3.394,
    "segment": 0
   },
   {
    "w": "is",
-   "start": 3.314,
-   "end": 3.404,
+   "start": 3.394,
+   "end": 3.484,
    "segment": 0
   },
   {
    "w": "the",
-   "start": 3.404,
-   "end": 3.474,
+   "start": 3.484,
+   "end": 3.554,
    "segment": 0
   },
   {
    "w": "greatest",
-   "start": 3.474,
-   "end": 3.884,
+   "start": 3.554,
+   "end": 3.964,
    "segment": 0
   },
   {
    "w": "skill",
-   "start": 3.884,
-   "end": 4.234,
+   "start": 3.964,
+   "end": 4.314,
    "segment": 0
   },
   {
    "w": "that",
-   "start": 4.234,
-   "end": 4.274,
+   "start": 4.314,
+   "end": 4.354,
    "segment": 0
   },
   {
    "w": "you",
-   "start": 4.274,
-   "end": 4.453,
+   "start": 4.354,
+   "end": 4.533,
    "segment": 0
   },
   {
    "w": "can",
-   "start": 4.453,
-   "end": 4.603,
+   "start": 4.533,
+   "end": 4.683,
    "segment": 0
   },
   {
    "w": "develop",
-   "start": 4.603,
-   "end": 4.973,
+   "start": 4.683,
+   "end": 5.053,
    "segment": 0
   },
   {
    "w": "as",
-   "start": 4.973,
-   "end": 5.063,
+   "start": 5.053,
+   "end": 5.143,
    "segment": 0
   },
   {
    "w": "a",
-   "start": 5.063,
-   "end": 5.093,
+   "start": 5.143,
+   "end": 5.173,
    "segment": 0
   },
   {
    "w": "man",
-   "start": 5.093,
-   "end": 5.333,
-   "segment": 0
-  },
-  {
-   "w": "in",
-   "start": 5.333,
+   "start": 5.173,
    "end": 5.413,
    "segment": 0
   },
   {
-   "w": "your",
+   "w": "in",
    "start": 5.413,
-   "end": 5.503,
+   "end": 5.493,
+   "segment": 0
+  },
+  {
+   "w": "your",
+   "start": 5.493,
+   "end": 5.583,
    "segment": 0
   },
   {
    "w": "20s,",
-   "start": 5.503,
-   "end": 5.754,
+   "start": 5.583,
+   "end": 5.834,
    "segment": 0
   },
   {
    "w": "30s,",
-   "start": 5.754,
-   "end": 5.924,
+   "start": 5.834,
+   "end": 6.004,
    "segment": 0
   },
   {
    "w": "for",
-   "start": 5.924,
-   "end": 6.074,
+   "start": 6.004,
+   "end": 6.154,
    "segment": 0
   },
   {
    "w": "the",
-   "start": 6.074,
-   "end": 6.364,
+   "start": 6.154,
+   "end": 6.444,
    "segment": 0
   },
   {
    "w": "rest",
-   "start": 6.364,
-   "end": 6.574,
+   "start": 6.444,
+   "end": 6.654,
    "segment": 0
   },
   {
    "w": "of",
-   "start": 6.574,
-   "end": 7.034,
+   "start": 6.654,
+   "end": 7.114,
    "segment": 0
   },
   {
    "w": "your",
-   "start": 7.034,
-   "end": 7.224,
+   "start": 7.114,
+   "end": 7.304,
    "segment": 0
   },
   {
    "w": "career",
-   "start": 7.224,
-   "end": 7.3,
+   "start": 7.304,
+   "end": 7.6,
    "segment": 0
   },
   {
    "w": "When",
-   "start": 7.3,
-   "end": 7.455,
+   "start": 7.69,
+   "end": 7.845,
    "segment": 1,
    "approx": true
   },
   {
    "w": "we",
-   "start": 7.455,
-   "end": 7.61,
+   "start": 7.845,
+   "end": 8.0,
    "segment": 1,
    "approx": true
   },
   {
    "w": "were",
-   "start": 7.61,
-   "end": 7.765,
+   "start": 8.0,
+   "end": 8.155,
    "segment": 1,
    "approx": true
   },
   {
    "w": "selling",
-   "start": 7.765,
-   "end": 7.919,
+   "start": 8.155,
+   "end": 8.309,
    "segment": 1,
    "approx": true
   },
   {
    "w": "booty",
-   "start": 7.919,
-   "end": 8.074,
+   "start": 8.309,
+   "end": 8.464,
    "segment": 1,
    "approx": true
   },
   {
    "w": "bands,",
-   "start": 8.074,
-   "end": 8.229,
+   "start": 8.464,
+   "end": 8.619,
    "segment": 1,
    "approx": true
   },
   {
    "w": "and",
-   "start": 8.229,
-   "end": 8.269,
+   "start": 8.619,
+   "end": 8.659,
    "segment": 1
   },
   {
    "w": "what",
-   "start": 8.269,
-   "end": 8.309,
+   "start": 8.659,
+   "end": 8.699,
    "segment": 1
   },
   {
    "w": "I",
-   "start": 8.309,
-   "end": 8.337,
+   "start": 8.699,
+   "end": 8.727,
    "segment": 1
   },
   {
    "w": "felt",
-   "start": 8.337,
-   "end": 8.684,
+   "start": 8.727,
+   "end": 9.074,
    "segment": 1
   },
   {
    "w": "like,",
-   "start": 8.684,
-   "end": 8.878,
+   "start": 9.074,
+   "end": 9.268,
    "segment": 1
   },
   {
    "w": "we",
-   "start": 8.878,
-   "end": 8.918,
+   "start": 9.268,
+   "end": 9.308,
    "segment": 1
   },
   {
    "w": "plateaued",
-   "start": 8.918,
-   "end": 9.492,
+   "start": 9.308,
+   "end": 9.882,
    "segment": 1
   },
   {
    "w": "that",
-   "start": 9.492,
-   "end": 9.982,
+   "start": 9.882,
+   "end": 10.372,
    "segment": 1
   },
   {
    "w": "business.",
-   "start": 9.982,
-   "end": 10.272,
+   "start": 10.372,
+   "end": 10.662,
    "segment": 1
   },
   {
    "w": "It's",
-   "start": 10.272,
-   "end": 10.432,
+   "start": 10.662,
+   "end": 10.822,
    "segment": 1
   },
   {
    "w": "because",
-   "start": 10.432,
-   "end": 10.472,
+   "start": 10.822,
+   "end": 10.862,
    "segment": 1
   },
   {
    "w": "we",
-   "start": 10.676,
-   "end": 10.786,
+   "start": 11.066,
+   "end": 11.176,
    "segment": 1
   },
   {
    "w": "were",
-   "start": 10.786,
-   "end": 10.886,
+   "start": 11.176,
+   "end": 11.276,
    "segment": 1
   },
   {
    "w": "the",
-   "start": 10.886,
-   "end": 10.976,
+   "start": 11.276,
+   "end": 11.366,
    "segment": 1
   },
   {
    "w": "number",
-   "start": 10.976,
-   "end": 11.185,
+   "start": 11.366,
+   "end": 11.575,
    "segment": 1
   },
   {
    "w": "one",
-   "start": 11.185,
-   "end": 11.554,
+   "start": 11.575,
+   "end": 11.944,
    "segment": 1
   },
   {
    "w": "selling",
-   "start": 11.554,
-   "end": 11.934,
+   "start": 11.944,
+   "end": 12.324,
    "segment": 1
   },
   {
    "w": "booty",
-   "start": 11.934,
-   "end": 12.224,
+   "start": 12.324,
+   "end": 12.614,
    "segment": 1
   },
   {
    "w": "band",
-   "start": 12.224,
-   "end": 12.734,
+   "start": 12.614,
+   "end": 13.124,
    "segment": 1
   },
   {
    "w": "business",
-   "start": 12.734,
-   "end": 12.782,
+   "start": 13.124,
+   "end": 13.172,
    "segment": 1
   },
   {
    "w": "in",
-   "start": 12.782,
-   "end": 13.002,
+   "start": 13.172,
+   "end": 13.392,
    "segment": 1
   },
   {
    "w": "America.",
-   "start": 13.002,
-   "end": 13.38,
+   "start": 13.392,
+   "end": 13.942,
    "segment": 1
   },
   {
    "w": "It",
-   "start": 13.64,
-   "end": 13.74,
+   "start": 14.24,
+   "end": 14.34,
    "segment": 2
   },
   {
    "w": "was",
-   "start": 13.74,
-   "end": 13.91,
+   "start": 14.34,
+   "end": 14.51,
    "segment": 2
   },
   {
    "w": "time",
-   "start": 13.91,
-   "end": 14.28,
+   "start": 14.51,
+   "end": 14.88,
    "segment": 2
   },
   {
    "w": "to",
-   "start": 14.28,
-   "end": 14.39,
+   "start": 14.88,
+   "end": 14.99,
    "segment": 2
   },
   {
    "w": "move",
-   "start": 14.39,
-   "end": 14.62,
+   "start": 14.99,
+   "end": 15.22,
    "segment": 2
   },
   {
    "w": "on.",
-   "start": 14.62,
-   "end": 14.722,
+   "start": 15.22,
+   "end": 15.322,
    "segment": 2
   },
   {
    "w": "I",
-   "start": 14.722,
-   "end": 14.894,
+   "start": 15.322,
+   "end": 15.494,
    "segment": 2
   },
   {
    "w": "had",
-   "start": 14.894,
-   "end": 15.094,
+   "start": 15.494,
+   "end": 15.694,
    "segment": 2
   },
   {
    "w": "logical",
-   "start": 15.094,
-   "end": 15.634,
+   "start": 15.694,
+   "end": 16.234,
    "segment": 2
   },
   {
    "w": "data",
-   "start": 15.634,
-   "end": 15.954,
+   "start": 16.234,
+   "end": 16.554,
    "segment": 2
   },
   {
    "w": "in",
-   "start": 15.954,
-   "end": 16.114,
+   "start": 16.554,
+   "end": 16.714,
    "segment": 2
   },
   {
    "w": "front",
-   "start": 16.114,
-   "end": 16.344,
+   "start": 16.714,
+   "end": 16.944,
    "segment": 2
   },
   {
    "w": "of",
-   "start": 16.344,
-   "end": 16.404,
+   "start": 16.944,
+   "end": 17.004,
    "segment": 2
   },
   {
    "w": "me",
-   "start": 16.404,
-   "end": 16.564,
+   "start": 17.004,
+   "end": 17.164,
    "segment": 2
   },
   {
    "w": "that",
-   "start": 16.564,
-   "end": 16.604,
+   "start": 17.164,
+   "end": 17.204,
    "segment": 2
   },
   {
    "w": "this",
-   "start": 16.889,
-   "end": 17.109,
+   "start": 17.619,
+   "end": 17.839,
    "segment": 2
   },
   {
    "w": "could",
-   "start": 17.109,
-   "end": 17.269,
+   "start": 17.839,
+   "end": 17.999,
    "segment": 2
   },
   {
    "w": "not",
-   "start": 17.269,
-   "end": 17.609,
+   "start": 17.999,
+   "end": 18.339,
    "segment": 2
   },
   {
    "w": "scale",
-   "start": 17.609,
-   "end": 18.149,
+   "start": 18.339,
+   "end": 18.879,
    "segment": 2
   },
   {
    "w": "as",
-   "start": 18.149,
-   "end": 18.171,
+   "start": 18.879,
+   "end": 18.901,
    "segment": 2
   },
   {
    "w": "fast",
-   "start": 18.171,
-   "end": 18.474,
+   "start": 18.901,
+   "end": 19.204,
    "segment": 2
   },
   {
    "w": "as",
-   "start": 18.474,
-   "end": 18.754,
+   "start": 19.204,
+   "end": 19.484,
    "segment": 2
   },
   {
    "w": "I",
-   "start": 18.754,
-   "end": 18.814,
+   "start": 19.484,
+   "end": 19.544,
    "segment": 2
   },
   {
    "w": "would",
-   "start": 18.814,
-   "end": 18.964,
+   "start": 19.544,
+   "end": 19.694,
    "segment": 2
   },
   {
    "w": "like",
-   "start": 18.964,
-   "end": 19.154,
+   "start": 19.694,
+   "end": 19.884,
    "segment": 2
   },
   {
    "w": "it",
-   "start": 19.154,
-   "end": 19.234,
+   "start": 19.884,
+   "end": 19.964,
    "segment": 2
   },
   {
    "w": "to,",
-   "start": 19.234,
-   "end": 19.894,
+   "start": 19.964,
+   "end": 20.624,
    "segment": 2
   },
   {
    "w": "and",
-   "start": 19.894,
-   "end": 19.934,
+   "start": 20.624,
+   "end": 20.664,
    "segment": 2
   },
   {
    "w": "there",
-   "start": 19.934,
-   "end": 19.974,
+   "start": 20.664,
+   "end": 20.704,
    "segment": 2
   },
   {
    "w": "was",
-   "start": 19.974,
-   "end": 20.014,
+   "start": 20.704,
+   "end": 20.744,
    "segment": 2
   },
   {
    "w": "a",
-   "start": 20.014,
-   "end": 20.054,
+   "start": 20.744,
+   "end": 20.784,
    "segment": 2
   },
   {
    "w": "greater",
-   "start": 20.054,
-   "end": 20.166,
+   "start": 20.784,
+   "end": 20.896,
    "segment": 2
   },
   {
    "w": "opportunity,",
-   "start": 20.166,
-   "end": 20.737,
+   "start": 20.896,
+   "end": 21.467,
    "segment": 2
   },
   {
    "w": "such",
-   "start": 20.737,
-   "end": 20.807,
+   "start": 21.467,
+   "end": 21.537,
    "segment": 2
   },
   {
    "w": "as",
-   "start": 20.807,
-   "end": 20.877,
+   "start": 21.537,
+   "end": 21.607,
    "segment": 2
   },
   {
    "w": "greens,",
-   "start": 20.877,
-   "end": 21.187,
+   "start": 21.607,
+   "end": 21.917,
    "segment": 2
   },
   {
    "w": "powders,",
-   "start": 21.187,
-   "end": 21.547,
+   "start": 21.917,
+   "end": 22.277,
    "segment": 2
   },
   {
    "w": "or",
-   "start": 21.547,
-   "end": 21.667,
+   "start": 22.277,
+   "end": 22.397,
    "segment": 2
   },
   {
    "w": "beverage.",
-   "start": 21.667,
-   "end": 21.961,
+   "start": 22.397,
+   "end": 22.691,
    "segment": 2
   },
   {
    "w": "So",
-   "start": 22.158,
-   "end": 22.198,
+   "start": 22.948,
+   "end": 22.988,
    "segment": 3
   },
   {
    "w": "if",
-   "start": 22.198,
-   "end": 22.238,
+   "start": 22.988,
+   "end": 23.028,
    "segment": 3
   },
   {
    "w": "I",
-   "start": 22.238,
-   "end": 22.278,
+   "start": 23.028,
+   "end": 23.068,
    "segment": 3
   },
   {
    "w": "just",
-   "start": 22.278,
-   "end": 22.318,
+   "start": 23.068,
+   "end": 23.108,
    "segment": 3
   },
   {
    "w": "look",
-   "start": 22.318,
-   "end": 22.358,
+   "start": 23.108,
+   "end": 23.148,
    "segment": 3
   },
   {
    "w": "at",
-   "start": 22.358,
-   "end": 22.398,
+   "start": 23.148,
+   "end": 23.188,
    "segment": 3
   },
   {
    "w": "the",
-   "start": 22.398,
-   "end": 22.438,
+   "start": 23.188,
+   "end": 23.228,
    "segment": 3
   },
   {
    "w": "Greens",
-   "start": 22.438,
-   "end": 22.478,
+   "start": 23.228,
+   "end": 23.268,
    "segment": 3
   },
   {
    "w": "category,",
-   "start": 22.478,
-   "end": 22.518,
+   "start": 23.268,
+   "end": 23.308,
    "segment": 3
   },
   {
    "w": "total",
-   "start": 23.975,
-   "end": 24.645,
-   "segment": 3
-  },
-  {
-   "w": "addressable",
-   "start": 24.645,
-   "end": 25.055,
-   "segment": 3
-  },
-  {
-   "w": "market,",
-   "start": 25.055,
+   "start": 24.765,
    "end": 25.435,
    "segment": 3
   },
   {
+   "w": "addressable",
+   "start": 25.435,
+   "end": 25.845,
+   "segment": 3
+  },
+  {
+   "w": "market,",
+   "start": 25.845,
+   "end": 26.225,
+   "segment": 3
+  },
+  {
    "w": "I",
-   "start": 25.462,
-   "end": 25.612,
+   "start": 26.252,
+   "end": 26.402,
    "segment": 3
   },
   {
    "w": "see",
-   "start": 25.612,
-   "end": 25.932,
+   "start": 26.402,
+   "end": 26.722,
    "segment": 3
   },
   {
    "w": "can't",
-   "start": 25.932,
-   "end": 26.192,
+   "start": 26.722,
+   "end": 26.982,
    "segment": 3
   },
   {
    "w": "really",
-   "start": 26.192,
-   "end": 26.352,
+   "start": 26.982,
+   "end": 27.142,
    "segment": 3
   },
   {
    "w": "get",
-   "start": 26.352,
-   "end": 26.512,
+   "start": 27.142,
+   "end": 27.302,
    "segment": 3
   },
   {
    "w": "larger",
-   "start": 26.512,
-   "end": 26.842,
+   "start": 27.302,
+   "end": 27.632,
    "segment": 3
   },
   {
    "w": "than",
-   "start": 26.842,
-   "end": 26.882,
+   "start": 27.632,
+   "end": 27.672,
    "segment": 3
   },
   {
    "w": "a",
-   "start": 26.882,
-   "end": 26.922,
+   "start": 27.672,
+   "end": 27.712,
    "segment": 3
   },
   {
    "w": "quarter",
-   "start": 26.922,
-   "end": 27.297,
+   "start": 27.712,
+   "end": 28.087,
    "segment": 3
   },
   {
    "w": "billion",
-   "start": 27.297,
-   "end": 27.567,
+   "start": 28.087,
+   "end": 28.357,
    "segment": 3
   },
   {
    "w": "dollars",
-   "start": 27.567,
-   "end": 27.867,
+   "start": 28.357,
+   "end": 28.657,
    "segment": 3
   },
   {
    "w": "a",
-   "start": 27.867,
-   "end": 27.897,
+   "start": 28.657,
+   "end": 28.687,
    "segment": 3
   },
   {
    "w": "year.",
-   "start": 27.897,
-   "end": 28.103,
+   "start": 28.687,
+   "end": 28.893,
    "segment": 3
   },
   {
    "w": "I",
-   "start": 28.103,
-   "end": 28.189,
+   "start": 28.893,
+   "end": 28.979,
    "segment": 3
   },
   {
    "w": "look",
-   "start": 28.499,
-   "end": 28.649,
+   "start": 29.289,
+   "end": 29.439,
    "segment": 3
   },
   {
    "w": "at",
-   "start": 28.649,
-   "end": 28.709,
+   "start": 29.439,
+   "end": 29.499,
    "segment": 3
   },
   {
    "w": "the",
-   "start": 28.709,
-   "end": 28.839,
+   "start": 29.499,
+   "end": 29.629,
    "segment": 3
   },
   {
    "w": "energy",
-   "start": 28.839,
-   "end": 29.169,
+   "start": 29.629,
+   "end": 29.959,
    "segment": 3
   },
   {
    "w": "drink",
-   "start": 29.169,
-   "end": 29.609,
+   "start": 29.959,
+   "end": 30.399,
    "segment": 3
   },
   {
    "w": "market",
-   "start": 29.609,
-   "end": 29.649,
+   "start": 30.399,
+   "end": 30.439,
    "segment": 3
   },
   {
    "w": "and",
-   "start": 29.649,
-   "end": 29.689,
+   "start": 30.439,
+   "end": 30.479,
    "segment": 3
   },
   {
    "w": "I",
-   "start": 29.689,
-   "end": 29.729,
+   "start": 30.479,
+   "end": 30.519,
    "segment": 3
   },
   {
    "w": "look",
-   "start": 29.729,
-   "end": 29.769,
+   "start": 30.519,
+   "end": 30.559,
    "segment": 3
   },
   {
    "w": "at",
-   "start": 29.769,
-   "end": 29.923,
+   "start": 30.559,
+   "end": 30.713,
    "segment": 3
   },
   {
    "w": "multi",
-   "start": 29.923,
-   "end": 30.293,
+   "start": 30.713,
+   "end": 31.083,
    "segment": 3
   },
   {
    "w": "ten,",
-   "start": 30.293,
-   "end": 30.333,
+   "start": 31.083,
+   "end": 31.123,
    "segment": 3
   },
   {
    "w": "multi",
-   "start": 30.333,
-   "end": 30.373,
+   "start": 31.123,
+   "end": 31.163,
    "segment": 3
   },
   {
    "w": "deca",
-   "start": 30.373,
-   "end": 31.025,
+   "start": 31.163,
+   "end": 31.815,
    "segment": 3,
    "approx": true
   },
   {
    "w": "billion",
-   "start": 32.396,
-   "end": 32.806,
-   "segment": 3
-  },
-  {
-   "w": "dollar",
-   "start": 32.806,
-   "end": 33.116,
-   "segment": 3
-  },
-  {
-   "w": "opportunity",
-   "start": 33.116,
+   "start": 33.186,
    "end": 33.596,
    "segment": 3
   },
   {
-   "w": "to",
+   "w": "dollar",
    "start": 33.596,
-   "end": 33.666,
+   "end": 33.906,
+   "segment": 3
+  },
+  {
+   "w": "opportunity",
+   "start": 33.906,
+   "end": 34.386,
+   "segment": 3
+  },
+  {
+   "w": "to",
+   "start": 34.386,
+   "end": 34.456,
    "segment": 3
   },
   {
    "w": "go",
-   "start": 33.666,
-   "end": 33.826,
+   "start": 34.456,
+   "end": 34.616,
    "segment": 3
   },
   {
    "w": "after.",
-   "start": 33.826,
-   "end": 34.19,
+   "start": 34.616,
+   "end": 34.996,
    "segment": 3
   },
   {
    "w": "That's",
-   "start": 34.422,
-   "end": 34.57,
+   "start": 35.242,
+   "end": 35.39,
    "segment": 4
   },
   {
    "w": "why",
-   "start": 34.95,
-   "end": 35.332,
+   "start": 35.89,
+   "end": 36.272,
    "segment": 4
   },
   {
    "w": "I",
-   "start": 35.332,
-   "end": 35.524,
+   "start": 36.272,
+   "end": 36.464,
    "segment": 4
   },
   {
    "w": "move",
-   "start": 35.524,
-   "end": 35.804,
+   "start": 36.464,
+   "end": 36.744,
    "segment": 4
   },
   {
    "w": "on",
-   "start": 35.804,
-   "end": 36.184,
+   "start": 36.744,
+   "end": 37.124,
    "segment": 4
   },
   {
    "w": "to",
-   "start": 36.184,
-   "end": 36.374,
+   "start": 37.124,
+   "end": 37.314,
    "segment": 4
   },
   {
    "w": "larger",
-   "start": 36.374,
-   "end": 36.694,
+   "start": 37.314,
+   "end": 37.634,
    "segment": 4
   },
   {
    "w": "challenges.",
-   "start": 36.694,
-   "end": 37.304,
+   "start": 37.634,
+   "end": 38.244,
    "segment": 4
   },
   {
    "w": "and",
-   "start": 37.66,
-   "end": 37.996,
+   "start": 38.425,
+   "end": 38.671,
    "segment": 5
   },
   {
    "w": "I",
-   "start": 37.996,
-   "end": 38.096,
+   "start": 38.671,
+   "end": 38.771,
    "segment": 5
   },
   {
    "w": "continue",
-   "start": 38.096,
-   "end": 38.706,
+   "start": 38.771,
+   "end": 39.381,
    "segment": 5
   },
   {
    "w": "to",
-   "start": 38.706,
-   "end": 38.846,
+   "start": 39.381,
+   "end": 39.521,
    "segment": 5
   },
   {
    "w": "practice",
-   "start": 38.846,
-   "end": 39.416,
+   "start": 39.521,
+   "end": 40.091,
    "segment": 5
   },
   {
    "w": "that",
-   "start": 39.416,
-   "end": 39.596,
+   "start": 40.091,
+   "end": 40.271,
    "segment": 5
   },
   {
    "w": "muscle",
-   "start": 39.596,
-   "end": 39.872,
+   "start": 40.271,
+   "end": 40.547,
    "segment": 5
   },
   {
    "w": "as",
-   "start": 39.872,
-   "end": 39.9,
+   "start": 40.547,
+   "end": 40.575,
    "segment": 5
   },
   {
    "w": "I",
-   "start": 39.9,
-   "end": 40.728,
+   "start": 40.575,
+   "end": 41.403,
    "segment": 5
   },
   {
    "w": "age.",
-   "start": 40.728,
-   "end": 41.158,
+   "start": 41.403,
+   "end": 41.833,
    "segment": 5
   }
  ]

@@ -5,7 +5,12 @@
   "fps": 23.976,
   "words": "work/words.json",
   "face_track": "work/face_track.json",
-  "rough_cut": { "silence_db": -36, "max_pause_s": 0.3, "air_s": 0.1 },
+  "rough_cut": {
+    "silence_db": -42,
+    "max_pause_s": 0.3,
+    "air_s": 0.1,
+    "snap_silence_db": -44
+  },
   "framing": {
     "eyes_y": 640,
     "base_crop_h": 900,
@@ -14,11 +19,42 @@
     "burned_subs_top_src": 965
   },
   "segments": [
-    { "role": "хук",      "in": 65.28, "out": 72.58, "text": "Knowing when to switch from the good to the great is the greatest opportunity, or is the greatest skill that you can develop as a man in your 20s, 30s, for the rest of your career" },
-    { "role": "контекст", "in": 0.00,  "out": 6.08,  "text": "When we were selling booty bands, and what I felt like, we plateaued that business. It's because we were the number one selling booty band business in America." },
-    { "role": "суть",     "in": 12.85, "out": 21.63, "text": "It was time to move on. I had logical data in front of me that this could not scale as fast as I would like it to, and there was a greater opportunity, such as greens, powders, or beverage." },
-    { "role": "суть",     "in": 25.70, "out": 37.86, "text": "So if I just look at the Greens category, total addressable market, I see can't really get larger than a quarter billion dollars a year. I look at the energy drink market and I look at multi-ten, multi-deca billion dollar opportunity to go after." },
-    { "role": "вывод",    "in": 53.33, "out": 56.72, "text": "That's why I move on to larger challenges." },
-    { "role": "вывод",    "in": 72.60, "out": 76.30, "text": "and I continue to practice that muscle as I age." }
+    {
+      "role": "хук",
+      "in": 65.2,
+      "out": 72.89,
+      "text": "Knowing when to switch from the good to the great is the greatest opportunity, or is the greatest skill that you can develop as a man in your 20s, 30s, for the rest of your career"
+    },
+    {
+      "role": "контекст",
+      "in": 0.0,
+      "out": 6.28,
+      "text": "When we were selling booty bands, and what I felt like, we plateaued that business. It's because we were the number one selling booty band business in America.",
+      "_note": "исходник начинается посреди речи: первое слово «When» может быть срезано самой загрузкой (перекачать с 9:15)"
+    },
+    {
+      "role": "суть",
+      "in": 12.84,
+      "out": 21.63,
+      "text": "It was time to move on. I had logical data in front of me that this could not scale as fast as I would like it to, and there was a greater opportunity, such as greens, powders, or beverage."
+    },
+    {
+      "role": "суть",
+      "in": 25.7,
+      "out": 37.89,
+      "text": "So if I just look at the Greens category, total addressable market, I see can't really get larger than a quarter billion dollars a year. I look at the energy drink market and I look at multi-ten, multi-deca billion dollar opportunity to go after."
+    },
+    {
+      "role": "вывод",
+      "in": 53.33,
+      "out": 56.745,
+      "text": "That's why I move on to larger challenges."
+    },
+    {
+      "role": "вывод",
+      "in": 72.89,
+      "out": 76.3,
+      "text": "and I continue to practice that muscle as I age."
+    }
   ]
 }
