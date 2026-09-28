@@ -1,6 +1,6 @@
 # Материалы для рилса
 
-> **Статус:** картинки 1–8 получены и обработаны (вырез фона, ч/б) — `assets/images/`, превью `work/assets_preview.jpg`. Шрифты получены — `assets/fonts/` (Coolvetica лежит локально в `assets/fonts/coolvetica/`, в git не хранится по лицензии Typodermic; в клипе нужен только Coolvetica Regular). Осталось: SFX, музыка (по желанию).
+> **Статус:** картинки 1–8 получены и обработаны (вырез фона, ч/б) — `assets/images/`, превью `work/assets_preview.jpg`. Шрифты получены — `assets/fonts/` (Coolvetica лежит локально в `assets/fonts/coolvetica/`, в git не хранится по лицензии Typodermic; в клипе нужен только Coolvetica Regular). SFX получены и подготовлены — `assets/sfx/` (`_build/sfx_prep.py`: варианты ±2 пт, пик −12…−14 dBFS; swish — freesound swish-sound-94707, riser — хвост Cinematic Reverse 3). Осталось: музыка (по желанию).
 
 Стиль вставок — **S2 белая редакционная карточка, чёрно-белая** (как референс). Вставки занимают ≈16 с из 41 (39 %, гайд 9.1: 30–40 %).
 

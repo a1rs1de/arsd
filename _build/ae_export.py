@@ -119,6 +119,22 @@ def group_subtitles(words, fps: float, duration: float):
     return out
 
 
+def sfx_peak_offsets(sfx_dir: Path) -> dict:
+    """Пик громкости каждого типа SFX от начала файла — звук ставим так, чтобы пик пришёлся на событие."""
+    import subprocess
+    import numpy as np
+    out = {}
+    for f in sorted(sfx_dir.glob("*_1.wav")):
+        raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(f), "-ac", "1", "-ar", "8000", "-f", "f32le", "-"],
+                             capture_output=True).stdout
+        a = np.abs(np.frombuffer(raw, np.float32))
+        if len(a):
+            hop = 80  # 10 мс
+            env = a[: len(a) // hop * hop].reshape(-1, hop).max(1)
+            out[f.stem.rsplit("_", 1)[0]] = round(float(np.argmax(env)) * 0.01, 3)
+    return out
+
+
 def main() -> int:
     proj = Path(sys.argv[1]).resolve()
     edit = json.loads((proj / "work" / "edit.json").read_text(encoding="utf-8"))
@@ -160,6 +176,10 @@ def main() -> int:
             tr = words[find_word(words, ins["right"]["at"], 1, t_in - 0.5)]["start"] - 2 / fps
             d["right"] = {**ins["right"], "t": round(max(t_in + 0.4, tr), 3)}
             sfx.append({"t": d["right"]["t"], "kind": "swish", "prio": 2})
+        if ins["template"] == "V1_number":  # riser перед сильной цифрой (12.4): нарастание кончается на ней
+            sfx.append({"t": t_in + 0.3, "kind": "riser", "prio": 1})
+        if ins["template"] == "V9_compare" and "t" in d.get("right", {}):
+            sfx.append({"t": d["right"]["t"], "kind": "riser", "prio": 1})
         if ins["template"] in ("V1_number", "V2_thesis", "V5_object", "V8_chart"):
             sfx.append({"t": t_in + 0.3, "kind": "hit" if ins["template"] == "V1_number" else "pop", "prio": 2})
         sfx += [{"t": t_in, "kind": "swish", "prio": 1}, {"t": t_out - 0.12, "kind": "whoosh", "prio": 1}]
@@ -197,7 +217,11 @@ def main() -> int:
     for s in sfx:
         if sum(1 for k in kept if abs(k["t"] - s["t"]) < 1.0) < 2 and all(abs(k["t"] - s["t"]) > 0.15 for k in kept):
             kept.append(s)
-    kept = sorted(({"t": round(max(0.0, s["t"]), 3), "kind": s["kind"]} for s in kept), key=lambda s: s["t"])
+    offs = sfx_peak_offsets(proj / "assets" / "sfx")
+    kept = sorted(({"t": round(max(0.0, s["t"] - offs.get(s["kind"], 0.0)), 3), "kind": s["kind"]} for s in kept),
+                  key=lambda s: s["t"])
+    if offs:
+        print("пик SFX от начала файла, с: " + ", ".join(f"{k} {v}" for k, v in offs.items()))
 
     data = {
         "name": proj.name, "fps": fps, "width": W, "height": H, "duration": dur,
@@ -215,7 +239,8 @@ def main() -> int:
             # Длительности анимаций гайда (7) — в секундах (в гайде кадры при 30 fps).
             "T1": 8.5 / 30, "T2": 13 / 30, "T3_letter": 2.5 / 30, "T5_step": 14 / 30, "T6": 4.5 / 30,
             "card_in": 11 / 30, "defocus": 7 / 30, "lead_in_delay": 4 / 30,
-            "sfx_db": -8, "music_db": -20,
+            "sfx_db": 0,  # файлы уже с пиком −12…−14 dBFS (sfx_prep.py)
+            "music_db": -20,
         },
     }
     out_dir = proj / "ae"
