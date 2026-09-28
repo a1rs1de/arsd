@@ -11,3 +11,4 @@ projects/*/work/*.npy
 projects/*/work/check_face/
 projects/*/reference/frames/
 projects/*/assets/images/_originals/
+projects/*/assets/fonts/coolvetica/
