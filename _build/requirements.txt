@@ -1,3 +1,5 @@
 mediapipe>=0.10.20
 opencv-python-headless>=4.10
 numpy
+faster-whisper      # transcribe.py (модель с HuggingFace)
+pocketsphinx        # align.py (модель en-us внутри пакета, сеть не нужна)

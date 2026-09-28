@@ -1,0 +1,1230 @@
+{
+ "source": "source/uyCoTdBqjuA_0920-1120.mp4",
+ "fps": 23.976,
+ "canvas": [
+  1080,
+  1920
+ ],
+ "duration": 41.16,
+ "pieces": [
+  {
+   "segment": 0,
+   "role": "хук",
+   "src_in": 65.28,
+   "src_out": 72.58,
+   "t_in": 0.0,
+   "t_out": 7.3,
+   "punch": false,
+   "crop_start": [
+    717.98,
+    60.2,
+    506.25,
+    900.0
+   ],
+   "crop_end": [
+    725.35,
+    68.94,
+    491.5,
+    873.79
+   ],
+   "face": {
+    "eyes_src": 360.2,
+    "chin_src": 485.8,
+    "chin_canvas_max": 916
+   }
+  },
+  {
+   "segment": 1,
+   "role": "контекст",
+   "src_in": 0.0,
+   "src_out": 6.08,
+   "t_in": 7.3,
+   "t_out": 13.38,
+   "punch": true,
+   "crop_start": [
+    751.0,
+    92.84,
+    452.01,
+    803.57
+   ],
+   "crop_end": [
+    757.58,
+    100.64,
+    438.84,
+    780.17
+   ],
+   "face": {
+    "eyes_src": 360.7,
+    "chin_src": 492.7,
+    "chin_canvas_max": 965
+   }
+  },
+  {
+   "segment": 2,
+   "role": "суть",
+   "src_in": 12.85,
+   "src_out": 16.13,
+   "t_in": 13.38,
+   "t_out": 16.66,
+   "punch": false,
+   "crop_start": [
+    722.56,
+    65.3,
+    506.08,
+    899.7
+   ],
+   "crop_end": [
+    729.85,
+    73.94,
+    491.5,
+    873.79
+   ],
+   "face": {
+    "eyes_src": 365.2,
+    "chin_src": 493.3,
+    "chin_canvas_max": 921
+   }
+  },
+  {
+   "segment": 2,
+   "role": "суть",
+   "src_in": 16.26,
+   "src_out": 21.63,
+   "t_in": 16.66,
+   "t_out": 22.03,
+   "punch": true,
+   "crop_start": [
+    749.85,
+    93.69,
+    452.01,
+    803.57
+   ],
+   "crop_end": [
+    756.43,
+    101.49,
+    438.84,
+    780.17
+   ],
+   "face": {
+    "eyes_src": 361.5,
+    "chin_src": 482.8,
+    "chin_canvas_max": 938
+   }
+  },
+  {
+   "segment": 3,
+   "role": "суть",
+   "src_in": 25.7,
+   "src_out": 37.86,
+   "t_in": 22.03,
+   "t_out": 34.19,
+   "punch": false,
+   "crop_start": [
+    715.58,
+    64.7,
+    506.25,
+    900.0
+   ],
+   "crop_end": [
+    722.95,
+    73.44,
+    491.5,
+    873.79
+   ],
+   "face": {
+    "eyes_src": 364.7,
+    "chin_src": 486.5,
+    "chin_canvas_max": 908
+   }
+  },
+  {
+   "segment": 4,
+   "role": "вывод",
+   "src_in": 53.33,
+   "src_out": 53.72,
+   "t_in": 34.19,
+   "t_out": 34.58,
+   "punch": true,
+   "crop_start": [
+    737.7,
+    99.94,
+    452.01,
+    803.57
+   ],
+   "crop_end": [
+    744.28,
+    107.74,
+    438.84,
+    780.17
+   ],
+   "face": {
+    "eyes_src": 367.8,
+    "chin_src": 475.8,
+    "chin_canvas_max": 906
+   }
+  },
+  {
+   "segment": 4,
+   "role": "вывод",
+   "src_in": 53.84,
+   "src_out": 56.72,
+   "t_in": 34.58,
+   "t_out": 37.46,
+   "punch": true,
+   "crop_start": [
+    734.6,
+    93.34,
+    452.01,
+    803.57
+   ],
+   "crop_end": [
+    741.18,
+    101.14,
+    438.84,
+    780.17
+   ],
+   "face": {
+    "eyes_src": 361.2,
+    "chin_src": 483.6,
+    "chin_canvas_max": 941
+   }
+  },
+  {
+   "segment": 5,
+   "role": "вывод",
+   "src_in": 72.6,
+   "src_out": 76.3,
+   "t_in": 37.46,
+   "t_out": 41.16,
+   "punch": false,
+   "crop_start": [
+    718.22,
+    64.2,
+    506.25,
+    900.0
+   ],
+   "crop_end": [
+    725.6,
+    72.94,
+    491.5,
+    873.79
+   ],
+   "face": {
+    "eyes_src": 364.2,
+    "chin_src": 493.2,
+    "chin_canvas_max": 923
+   }
+  }
+ ],
+ "words": [
+  {
+   "w": "Knowing",
+   "start": 0.095,
+   "end": 0.395,
+   "segment": 0
+  },
+  {
+   "w": "when",
+   "start": 0.395,
+   "end": 0.529,
+   "segment": 0
+  },
+  {
+   "w": "to",
+   "start": 0.529,
+   "end": 0.659,
+   "segment": 0
+  },
+  {
+   "w": "switch",
+   "start": 0.659,
+   "end": 0.929,
+   "segment": 0
+  },
+  {
+   "w": "from",
+   "start": 0.929,
+   "end": 1.049,
+   "segment": 0
+  },
+  {
+   "w": "the",
+   "start": 1.049,
+   "end": 1.149,
+   "segment": 0
+  },
+  {
+   "w": "good",
+   "start": 1.149,
+   "end": 1.299,
+   "segment": 0
+  },
+  {
+   "w": "to",
+   "start": 1.299,
+   "end": 1.399,
+   "segment": 0
+  },
+  {
+   "w": "the",
+   "start": 1.399,
+   "end": 1.469,
+   "segment": 0
+  },
+  {
+   "w": "great",
+   "start": 1.469,
+   "end": 1.869,
+   "segment": 0
+  },
+  {
+   "w": "is",
+   "start": 1.869,
+   "end": 1.909,
+   "segment": 0
+  },
+  {
+   "w": "the",
+   "start": 1.909,
+   "end": 1.949,
+   "segment": 0
+  },
+  {
+   "w": "greatest",
+   "start": 1.949,
+   "end": 1.982,
+   "segment": 0
+  },
+  {
+   "w": "opportunity,",
+   "start": 1.982,
+   "end": 2.994,
+   "segment": 0
+  },
+  {
+   "w": "or",
+   "start": 3.134,
+   "end": 3.314,
+   "segment": 0
+  },
+  {
+   "w": "is",
+   "start": 3.314,
+   "end": 3.404,
+   "segment": 0
+  },
+  {
+   "w": "the",
+   "start": 3.404,
+   "end": 3.474,
+   "segment": 0
+  },
+  {
+   "w": "greatest",
+   "start": 3.474,
+   "end": 3.884,
+   "segment": 0
+  },
+  {
+   "w": "skill",
+   "start": 3.884,
+   "end": 4.234,
+   "segment": 0
+  },
+  {
+   "w": "that",
+   "start": 4.234,
+   "end": 4.274,
+   "segment": 0
+  },
+  {
+   "w": "you",
+   "start": 4.274,
+   "end": 4.453,
+   "segment": 0
+  },
+  {
+   "w": "can",
+   "start": 4.453,
+   "end": 4.603,
+   "segment": 0
+  },
+  {
+   "w": "develop",
+   "start": 4.603,
+   "end": 4.973,
+   "segment": 0
+  },
+  {
+   "w": "as",
+   "start": 4.973,
+   "end": 5.063,
+   "segment": 0
+  },
+  {
+   "w": "a",
+   "start": 5.063,
+   "end": 5.093,
+   "segment": 0
+  },
+  {
+   "w": "man",
+   "start": 5.093,
+   "end": 5.333,
+   "segment": 0
+  },
+  {
+   "w": "in",
+   "start": 5.333,
+   "end": 5.413,
+   "segment": 0
+  },
+  {
+   "w": "your",
+   "start": 5.413,
+   "end": 5.503,
+   "segment": 0
+  },
+  {
+   "w": "20s,",
+   "start": 5.503,
+   "end": 5.754,
+   "segment": 0
+  },
+  {
+   "w": "30s,",
+   "start": 5.754,
+   "end": 5.924,
+   "segment": 0
+  },
+  {
+   "w": "for",
+   "start": 5.924,
+   "end": 6.074,
+   "segment": 0
+  },
+  {
+   "w": "the",
+   "start": 6.074,
+   "end": 6.364,
+   "segment": 0
+  },
+  {
+   "w": "rest",
+   "start": 6.364,
+   "end": 6.574,
+   "segment": 0
+  },
+  {
+   "w": "of",
+   "start": 6.574,
+   "end": 7.034,
+   "segment": 0
+  },
+  {
+   "w": "your",
+   "start": 7.034,
+   "end": 7.224,
+   "segment": 0
+  },
+  {
+   "w": "career",
+   "start": 7.224,
+   "end": 7.3,
+   "segment": 0
+  },
+  {
+   "w": "When",
+   "start": 7.3,
+   "end": 7.455,
+   "segment": 1,
+   "approx": true
+  },
+  {
+   "w": "we",
+   "start": 7.455,
+   "end": 7.61,
+   "segment": 1,
+   "approx": true
+  },
+  {
+   "w": "were",
+   "start": 7.61,
+   "end": 7.765,
+   "segment": 1,
+   "approx": true
+  },
+  {
+   "w": "selling",
+   "start": 7.765,
+   "end": 7.919,
+   "segment": 1,
+   "approx": true
+  },
+  {
+   "w": "booty",
+   "start": 7.919,
+   "end": 8.074,
+   "segment": 1,
+   "approx": true
+  },
+  {
+   "w": "bands,",
+   "start": 8.074,
+   "end": 8.229,
+   "segment": 1,
+   "approx": true
+  },
+  {
+   "w": "and",
+   "start": 8.229,
+   "end": 8.269,
+   "segment": 1
+  },
+  {
+   "w": "what",
+   "start": 8.269,
+   "end": 8.309,
+   "segment": 1
+  },
+  {
+   "w": "I",
+   "start": 8.309,
+   "end": 8.337,
+   "segment": 1
+  },
+  {
+   "w": "felt",
+   "start": 8.337,
+   "end": 8.684,
+   "segment": 1
+  },
+  {
+   "w": "like,",
+   "start": 8.684,
+   "end": 8.878,
+   "segment": 1
+  },
+  {
+   "w": "we",
+   "start": 8.878,
+   "end": 8.918,
+   "segment": 1
+  },
+  {
+   "w": "plateaued",
+   "start": 8.918,
+   "end": 9.492,
+   "segment": 1
+  },
+  {
+   "w": "that",
+   "start": 9.492,
+   "end": 9.982,
+   "segment": 1
+  },
+  {
+   "w": "business.",
+   "start": 9.982,
+   "end": 10.272,
+   "segment": 1
+  },
+  {
+   "w": "It's",
+   "start": 10.272,
+   "end": 10.432,
+   "segment": 1
+  },
+  {
+   "w": "because",
+   "start": 10.432,
+   "end": 10.472,
+   "segment": 1
+  },
+  {
+   "w": "we",
+   "start": 10.676,
+   "end": 10.786,
+   "segment": 1
+  },
+  {
+   "w": "were",
+   "start": 10.786,
+   "end": 10.886,
+   "segment": 1
+  },
+  {
+   "w": "the",
+   "start": 10.886,
+   "end": 10.976,
+   "segment": 1
+  },
+  {
+   "w": "number",
+   "start": 10.976,
+   "end": 11.185,
+   "segment": 1
+  },
+  {
+   "w": "one",
+   "start": 11.185,
+   "end": 11.554,
+   "segment": 1
+  },
+  {
+   "w": "selling",
+   "start": 11.554,
+   "end": 11.934,
+   "segment": 1
+  },
+  {
+   "w": "booty",
+   "start": 11.934,
+   "end": 12.224,
+   "segment": 1
+  },
+  {
+   "w": "band",
+   "start": 12.224,
+   "end": 12.734,
+   "segment": 1
+  },
+  {
+   "w": "business",
+   "start": 12.734,
+   "end": 12.782,
+   "segment": 1
+  },
+  {
+   "w": "in",
+   "start": 12.782,
+   "end": 13.002,
+   "segment": 1
+  },
+  {
+   "w": "America.",
+   "start": 13.002,
+   "end": 13.38,
+   "segment": 1
+  },
+  {
+   "w": "It",
+   "start": 13.64,
+   "end": 13.74,
+   "segment": 2
+  },
+  {
+   "w": "was",
+   "start": 13.74,
+   "end": 13.91,
+   "segment": 2
+  },
+  {
+   "w": "time",
+   "start": 13.91,
+   "end": 14.28,
+   "segment": 2
+  },
+  {
+   "w": "to",
+   "start": 14.28,
+   "end": 14.39,
+   "segment": 2
+  },
+  {
+   "w": "move",
+   "start": 14.39,
+   "end": 14.62,
+   "segment": 2
+  },
+  {
+   "w": "on.",
+   "start": 14.62,
+   "end": 14.722,
+   "segment": 2
+  },
+  {
+   "w": "I",
+   "start": 14.722,
+   "end": 14.894,
+   "segment": 2
+  },
+  {
+   "w": "had",
+   "start": 14.894,
+   "end": 15.094,
+   "segment": 2
+  },
+  {
+   "w": "logical",
+   "start": 15.094,
+   "end": 15.634,
+   "segment": 2
+  },
+  {
+   "w": "data",
+   "start": 15.634,
+   "end": 15.954,
+   "segment": 2
+  },
+  {
+   "w": "in",
+   "start": 15.954,
+   "end": 16.114,
+   "segment": 2
+  },
+  {
+   "w": "front",
+   "start": 16.114,
+   "end": 16.344,
+   "segment": 2
+  },
+  {
+   "w": "of",
+   "start": 16.344,
+   "end": 16.404,
+   "segment": 2
+  },
+  {
+   "w": "me",
+   "start": 16.404,
+   "end": 16.564,
+   "segment": 2
+  },
+  {
+   "w": "that",
+   "start": 16.564,
+   "end": 16.604,
+   "segment": 2
+  },
+  {
+   "w": "this",
+   "start": 16.889,
+   "end": 17.109,
+   "segment": 2
+  },
+  {
+   "w": "could",
+   "start": 17.109,
+   "end": 17.269,
+   "segment": 2
+  },
+  {
+   "w": "not",
+   "start": 17.269,
+   "end": 17.609,
+   "segment": 2
+  },
+  {
+   "w": "scale",
+   "start": 17.609,
+   "end": 18.149,
+   "segment": 2
+  },
+  {
+   "w": "as",
+   "start": 18.149,
+   "end": 18.171,
+   "segment": 2
+  },
+  {
+   "w": "fast",
+   "start": 18.171,
+   "end": 18.474,
+   "segment": 2
+  },
+  {
+   "w": "as",
+   "start": 18.474,
+   "end": 18.754,
+   "segment": 2
+  },
+  {
+   "w": "I",
+   "start": 18.754,
+   "end": 18.814,
+   "segment": 2
+  },
+  {
+   "w": "would",
+   "start": 18.814,
+   "end": 18.964,
+   "segment": 2
+  },
+  {
+   "w": "like",
+   "start": 18.964,
+   "end": 19.154,
+   "segment": 2
+  },
+  {
+   "w": "it",
+   "start": 19.154,
+   "end": 19.234,
+   "segment": 2
+  },
+  {
+   "w": "to,",
+   "start": 19.234,
+   "end": 19.894,
+   "segment": 2
+  },
+  {
+   "w": "and",
+   "start": 19.894,
+   "end": 19.934,
+   "segment": 2
+  },
+  {
+   "w": "there",
+   "start": 19.934,
+   "end": 19.974,
+   "segment": 2
+  },
+  {
+   "w": "was",
+   "start": 19.974,
+   "end": 20.014,
+   "segment": 2
+  },
+  {
+   "w": "a",
+   "start": 20.014,
+   "end": 20.054,
+   "segment": 2
+  },
+  {
+   "w": "greater",
+   "start": 20.054,
+   "end": 20.166,
+   "segment": 2
+  },
+  {
+   "w": "opportunity,",
+   "start": 20.166,
+   "end": 20.737,
+   "segment": 2
+  },
+  {
+   "w": "such",
+   "start": 20.737,
+   "end": 20.807,
+   "segment": 2
+  },
+  {
+   "w": "as",
+   "start": 20.807,
+   "end": 20.877,
+   "segment": 2
+  },
+  {
+   "w": "greens,",
+   "start": 20.877,
+   "end": 21.187,
+   "segment": 2
+  },
+  {
+   "w": "powders,",
+   "start": 21.187,
+   "end": 21.547,
+   "segment": 2
+  },
+  {
+   "w": "or",
+   "start": 21.547,
+   "end": 21.667,
+   "segment": 2
+  },
+  {
+   "w": "beverage.",
+   "start": 21.667,
+   "end": 21.961,
+   "segment": 2
+  },
+  {
+   "w": "So",
+   "start": 22.158,
+   "end": 22.198,
+   "segment": 3
+  },
+  {
+   "w": "if",
+   "start": 22.198,
+   "end": 22.238,
+   "segment": 3
+  },
+  {
+   "w": "I",
+   "start": 22.238,
+   "end": 22.278,
+   "segment": 3
+  },
+  {
+   "w": "just",
+   "start": 22.278,
+   "end": 22.318,
+   "segment": 3
+  },
+  {
+   "w": "look",
+   "start": 22.318,
+   "end": 22.358,
+   "segment": 3
+  },
+  {
+   "w": "at",
+   "start": 22.358,
+   "end": 22.398,
+   "segment": 3
+  },
+  {
+   "w": "the",
+   "start": 22.398,
+   "end": 22.438,
+   "segment": 3
+  },
+  {
+   "w": "Greens",
+   "start": 22.438,
+   "end": 22.478,
+   "segment": 3
+  },
+  {
+   "w": "category,",
+   "start": 22.478,
+   "end": 22.518,
+   "segment": 3
+  },
+  {
+   "w": "total",
+   "start": 23.975,
+   "end": 24.645,
+   "segment": 3
+  },
+  {
+   "w": "addressable",
+   "start": 24.645,
+   "end": 25.055,
+   "segment": 3
+  },
+  {
+   "w": "market,",
+   "start": 25.055,
+   "end": 25.435,
+   "segment": 3
+  },
+  {
+   "w": "I",
+   "start": 25.462,
+   "end": 25.612,
+   "segment": 3
+  },
+  {
+   "w": "see",
+   "start": 25.612,
+   "end": 25.932,
+   "segment": 3
+  },
+  {
+   "w": "can't",
+   "start": 25.932,
+   "end": 26.192,
+   "segment": 3
+  },
+  {
+   "w": "really",
+   "start": 26.192,
+   "end": 26.352,
+   "segment": 3
+  },
+  {
+   "w": "get",
+   "start": 26.352,
+   "end": 26.512,
+   "segment": 3
+  },
+  {
+   "w": "larger",
+   "start": 26.512,
+   "end": 26.842,
+   "segment": 3
+  },
+  {
+   "w": "than",
+   "start": 26.842,
+   "end": 26.882,
+   "segment": 3
+  },
+  {
+   "w": "a",
+   "start": 26.882,
+   "end": 26.922,
+   "segment": 3
+  },
+  {
+   "w": "quarter",
+   "start": 26.922,
+   "end": 27.297,
+   "segment": 3
+  },
+  {
+   "w": "billion",
+   "start": 27.297,
+   "end": 27.567,
+   "segment": 3
+  },
+  {
+   "w": "dollars",
+   "start": 27.567,
+   "end": 27.867,
+   "segment": 3
+  },
+  {
+   "w": "a",
+   "start": 27.867,
+   "end": 27.897,
+   "segment": 3
+  },
+  {
+   "w": "year.",
+   "start": 27.897,
+   "end": 28.103,
+   "segment": 3
+  },
+  {
+   "w": "I",
+   "start": 28.103,
+   "end": 28.189,
+   "segment": 3
+  },
+  {
+   "w": "look",
+   "start": 28.499,
+   "end": 28.649,
+   "segment": 3
+  },
+  {
+   "w": "at",
+   "start": 28.649,
+   "end": 28.709,
+   "segment": 3
+  },
+  {
+   "w": "the",
+   "start": 28.709,
+   "end": 28.839,
+   "segment": 3
+  },
+  {
+   "w": "energy",
+   "start": 28.839,
+   "end": 29.169,
+   "segment": 3
+  },
+  {
+   "w": "drink",
+   "start": 29.169,
+   "end": 29.609,
+   "segment": 3
+  },
+  {
+   "w": "market",
+   "start": 29.609,
+   "end": 29.649,
+   "segment": 3
+  },
+  {
+   "w": "and",
+   "start": 29.649,
+   "end": 29.689,
+   "segment": 3
+  },
+  {
+   "w": "I",
+   "start": 29.689,
+   "end": 29.729,
+   "segment": 3
+  },
+  {
+   "w": "look",
+   "start": 29.729,
+   "end": 29.769,
+   "segment": 3
+  },
+  {
+   "w": "at",
+   "start": 29.769,
+   "end": 29.923,
+   "segment": 3
+  },
+  {
+   "w": "multi",
+   "start": 29.923,
+   "end": 30.293,
+   "segment": 3
+  },
+  {
+   "w": "ten,",
+   "start": 30.293,
+   "end": 30.333,
+   "segment": 3
+  },
+  {
+   "w": "multi",
+   "start": 30.333,
+   "end": 30.373,
+   "segment": 3
+  },
+  {
+   "w": "deca",
+   "start": 30.373,
+   "end": 31.025,
+   "segment": 3,
+   "approx": true
+  },
+  {
+   "w": "billion",
+   "start": 32.396,
+   "end": 32.806,
+   "segment": 3
+  },
+  {
+   "w": "dollar",
+   "start": 32.806,
+   "end": 33.116,
+   "segment": 3
+  },
+  {
+   "w": "opportunity",
+   "start": 33.116,
+   "end": 33.596,
+   "segment": 3
+  },
+  {
+   "w": "to",
+   "start": 33.596,
+   "end": 33.666,
+   "segment": 3
+  },
+  {
+   "w": "go",
+   "start": 33.666,
+   "end": 33.826,
+   "segment": 3
+  },
+  {
+   "w": "after.",
+   "start": 33.826,
+   "end": 34.19,
+   "segment": 3
+  },
+  {
+   "w": "That's",
+   "start": 34.422,
+   "end": 34.57,
+   "segment": 4
+  },
+  {
+   "w": "why",
+   "start": 34.95,
+   "end": 35.332,
+   "segment": 4
+  },
+  {
+   "w": "I",
+   "start": 35.332,
+   "end": 35.524,
+   "segment": 4
+  },
+  {
+   "w": "move",
+   "start": 35.524,
+   "end": 35.804,
+   "segment": 4
+  },
+  {
+   "w": "on",
+   "start": 35.804,
+   "end": 36.184,
+   "segment": 4
+  },
+  {
+   "w": "to",
+   "start": 36.184,
+   "end": 36.374,
+   "segment": 4
+  },
+  {
+   "w": "larger",
+   "start": 36.374,
+   "end": 36.694,
+   "segment": 4
+  },
+  {
+   "w": "challenges.",
+   "start": 36.694,
+   "end": 37.304,
+   "segment": 4
+  },
+  {
+   "w": "and",
+   "start": 37.66,
+   "end": 37.996,
+   "segment": 5
+  },
+  {
+   "w": "I",
+   "start": 37.996,
+   "end": 38.096,
+   "segment": 5
+  },
+  {
+   "w": "continue",
+   "start": 38.096,
+   "end": 38.706,
+   "segment": 5
+  },
+  {
+   "w": "to",
+   "start": 38.706,
+   "end": 38.846,
+   "segment": 5
+  },
+  {
+   "w": "practice",
+   "start": 38.846,
+   "end": 39.416,
+   "segment": 5
+  },
+  {
+   "w": "that",
+   "start": 39.416,
+   "end": 39.596,
+   "segment": 5
+  },
+  {
+   "w": "muscle",
+   "start": 39.596,
+   "end": 39.872,
+   "segment": 5
+  },
+  {
+   "w": "as",
+   "start": 39.872,
+   "end": 39.9,
+   "segment": 5
+  },
+  {
+   "w": "I",
+   "start": 39.9,
+   "end": 40.728,
+   "segment": 5
+  },
+  {
+   "w": "age.",
+   "start": 40.728,
+   "end": 41.158,
+   "segment": 5
+  }
+ ]
+}

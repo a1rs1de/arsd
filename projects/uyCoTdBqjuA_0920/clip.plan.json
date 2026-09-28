@@ -1,0 +1,24 @@
+{
+  "_comment": "План клипа по гайду (3.1): одна мысль, хук первым. Время — секунды исходника source/*.mp4 (= 9:20 + t в оригинале на YouTube).",
+  "source": "source/uyCoTdBqjuA_0920-1120.mp4",
+  "source_fps": 23.976,
+  "fps": 23.976,
+  "words": "work/words.json",
+  "face_track": "work/face_track.json",
+  "rough_cut": { "silence_db": -36, "max_pause_s": 0.3, "air_s": 0.1 },
+  "framing": {
+    "eyes_y": 640,
+    "base_crop_h": 900,
+    "punch_in": 1.12,
+    "push_in": 1.03,
+    "burned_subs_top_src": 965
+  },
+  "segments": [
+    { "role": "хук",      "in": 65.28, "out": 72.58, "text": "Knowing when to switch from the good to the great is the greatest opportunity, or is the greatest skill that you can develop as a man in your 20s, 30s, for the rest of your career" },
+    { "role": "контекст", "in": 0.00,  "out": 6.08,  "text": "When we were selling booty bands, and what I felt like, we plateaued that business. It's because we were the number one selling booty band business in America." },
+    { "role": "суть",     "in": 12.85, "out": 21.63, "text": "It was time to move on. I had logical data in front of me that this could not scale as fast as I would like it to, and there was a greater opportunity, such as greens, powders, or beverage." },
+    { "role": "суть",     "in": 25.70, "out": 37.86, "text": "So if I just look at the Greens category, total addressable market, I see can't really get larger than a quarter billion dollars a year. I look at the energy drink market and I look at multi-ten, multi-deca billion dollar opportunity to go after." },
+    { "role": "вывод",    "in": 53.33, "out": 56.72, "text": "That's why I move on to larger challenges." },
+    { "role": "вывод",    "in": 72.60, "out": 76.30, "text": "and I continue to practice that muscle as I age." }
+  ]
+}

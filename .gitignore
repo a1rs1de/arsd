@@ -2,3 +2,11 @@ _build/.venv/
 _build/models/
 _build/out/
 __pycache__/
+# тяжёлые медиа проектов — не в git (исходники у монтажёра локально)
+projects/*/source/*.mp4
+projects/*/reference/*.mp4
+projects/*/renders/
+projects/*/work/*.wav
+projects/*/work/*.npy
+projects/*/work/check_face/
+projects/*/reference/frames/
