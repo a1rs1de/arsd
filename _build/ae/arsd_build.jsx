@@ -590,25 +590,27 @@
     var subs = inFolder(app.project.items.addComp("SUBTITLES", W, H, 1, C.duration, FPS));
     var SY = S.sub_y, SS = S.sub_size;
     for (i = C.subtitles.length - 1; i >= 0; i--) {
-        var grp = C.subtitles[i], layers = [], widths = [], total = 0, space = SS * 0.28;
+        var grp = C.subtitles[i], layers = [], widths = [], space = SS * 0.28, lineW = [0, 0], lineN = [0, 0];
         for (j = 0; j < grp.words.length; j++) {
-            var w = grp.words[j], acc = !!w.accent;
+            var w = grp.words[j], acc = !!w.accent, ln = w.line ? 1 : 0;
             var tl = text(subs, w.w, acc ? "accent" : "sub", acc ? Math.round(SS * S.accent_scale) : SS, acc ? S.accent : S.paper,
                           ParagraphJustification.LEFT_JUSTIFY, acc ? 0 : -5);
             var r = tl.sourceRectAtTime(0, false);
             P(tl, "anchor").setValue([r.left, 0]);        // базовая линия
-            layers.push(tl); widths.push(r.width); total += r.width;
+            layers.push(tl); widths.push(r.width);
+            lineW[ln] += r.width + (lineN[ln] ? space : 0);
+            lineN[ln] += 1;
         }
-        total += space * (grp.words.length - 1);
-        var x = W / 2 - total / 2, BY = SY + SS * 0.36;   // центр строки y 1250 → базовая линия
+        // строка 1 — y 1250; вторая (дописанная к мелькающей, 6.1) — ниже на межстрочный интервал
+        var BY = [SY + SS * 0.36, SY + SS * 0.36 + SS * 1.18], xs = [W / 2 - lineW[0] / 2, W / 2 - lineW[1] / 2];
         for (j = 0; j < layers.length; j++) {
-            var lw = layers[j];
-            P(lw, "pos").setValue([x, BY]);
-            x += widths[j] + space;
+            var lw = layers[j], L = grp.words[j].line ? 1 : 0;
+            P(lw, "pos").setValue([xs[L], BY[L]]);
+            xs[L] += widths[j] + space;
             lw.inPoint = grp.words[j].t;
             lw.outPoint = grp.t_out;
             shadow(lw, 85, 4, 11, 180);
-            T1(lw, grp.words[j].t, BY);
+            T1(lw, grp.words[j].t, BY[L]);
             lw.motionBlur = true;
         }
     }

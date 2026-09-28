@@ -114,18 +114,6 @@ def group_subtitles(words, fps: float, duration: float, accents=frozenset()):
             merged[-1]["w"].extend(g["w"])
         else:
             merged.append(g)
-    # короткий огрызок перед акцентной строкой («or is» на 0,3 с) — к предыдущей строке, если влезает
-    gi = 1
-    while gi < len(merged):
-        g, prev = merged[gi], merged[gi - 1]
-        nxt_hold = gi + 1 < len(merged) and merged[gi + 1]["hold"]
-        short = len(g["w"]) <= 2 and (g["w"][-1]["end"] - g["w"][0]["start"]) < 0.45
-        if short and nxt_hold and not g["hold"] and not prev["hold"] and \
-                prev["w"][-1].get("segment") == g["w"][0].get("segment") and fits(prev["w"] + g["w"]):
-            prev["w"].extend(g["w"])
-            del merged[gi]
-            continue
-        gi += 1
     # одиночное слово после длинной строки — забираем к нему хвост предыдущей («look at / the Greens category»)
     for gi in range(1, len(merged)):
         g, prev = merged[gi]["w"], merged[gi - 1]["w"]
@@ -142,6 +130,34 @@ def group_subtitles(words, fps: float, duration: float, accents=frozenset()):
             else:
                 prev.extend(moved)
 
+    # короткий огрызок («or is», «and what» на 0,3 с) — к предыдущей строке, если влезает
+    gi = 1
+    while gi < len(merged):
+        g, prev = merged[gi], merged[gi - 1]
+        nxt_hold = gi + 1 < len(merged) and merged[gi + 1]["hold"]
+        short = len(g["w"]) <= 2 and (g["w"][-1]["end"] - g["w"][0]["start"]) < 0.45
+        nxt_start = merged[gi + 1]["w"][0]["start"] if gi + 1 < len(merged) else 1e9
+        flash = short and (nxt_hold or nxt_start - g["w"][0]["start"] < 0.45)  # иначе строка мелькнёт < 0,45 с
+        if flash and not g["hold"] and not prev["hold"] and \
+                prev["w"][-1].get("segment") == g["w"][0].get("segment") and fits(prev["w"] + g["w"]):
+            prev["w"].extend(g["w"])
+            del merged[gi]
+            continue
+        gi += 1
+    # строка всё ещё мелькает (< 0,45 с) — не убираем её, а дописываем следующую строку второй строкой (6.1: max 2)
+    for grp in merged:
+        grp.setdefault("split", None)
+    gi = 0
+    while gi + 1 < len(merged):
+        g, nx = merged[gi], merged[gi + 1]
+        span = nx["w"][0]["start"] - g["w"][0]["start"]
+        if span < 0.45 and not g["hold"] and g["split"] is None and nx["split"] is None and \
+                g["w"][-1].get("segment") == nx["w"][0].get("segment"):
+            g["split"] = len(g["w"])
+            g["w"].extend(nx["w"])
+            g["hold"] = nx["hold"]
+            del merged[gi + 1]
+        gi += 1
     out, prev_in, hold_until = [], -1.0, -1.0
     for gi, grp in enumerate(merged):
         g = grp["w"]
@@ -160,7 +176,8 @@ def group_subtitles(words, fps: float, duration: float, accents=frozenset()):
         out.append({"t_in": round(t_in, 3), "t_out": round(max(t_out, t_in + 0.3), 3),
                     **({"hold": True} if grp["hold"] else {}),
                     "words": [{"w": clean(x["w"]), "t": round(max(t_in, x["start"] - lead), 3),
-                               **({"accent": True} if x["_i"] in accents else {})} for x in g]})
+                               **({"line": 1} if grp["split"] is not None and k >= grp["split"] else {}),
+                               **({"accent": True} if x["_i"] in accents else {})} for k, x in enumerate(g)]})
     return out
 
 
@@ -294,8 +311,27 @@ def main() -> int:
           f"акцентов: {len(accents)}")
     share = sum(x["t_out"] - x["t_in"] for x in inserts) / dur
     print(f"доля вставок: {share * 100:.0f} % (гайд 30–40 %)")
+    # Проверки из «Известных проблем» гайда (раздел 18) — предупреждения, не ошибки.
+    warn = []
+    if share > 0.405:
+        warn.append(f"вставки занимают {share * 100:.0f} % > 40 % — укоротите карточки в inserts.json (18.6)")
+    ins_sorted = sorted(inserts, key=lambda x: x["t_in"])
+    for a, b in zip(ins_sorted, ins_sorted[1:]):
+        if b["t_in"] - a["t_out"] < 1.0:
+            warn.append(f"между {a['id']} и {b['id']} спикера {b['t_in'] - a['t_out']:.2f} с < 1 с — карточки слипаются (18.6)")
     for g in subs:
-        print(f"  {g['t_in']:6.2f}–{g['t_out']:6.2f}{' H' if g.get('hold') else '  '}  " + " ".join(("*" + w["w"] + "*") if w.get("accent") else w["w"] for w in g["words"]))
+        if g["t_out"] - g["t_in"] < 0.35 and len(g["words"]) <= 3:
+            warn.append(f"строка «{' '.join(w['w'] for w in g['words'])}» на экране {g['t_out'] - g['t_in']:.2f} с — мелькает (18.4)")
+    sfx_dir = proj / "assets" / "sfx"
+    for kind in sorted({s_["kind"] for s_ in kept}):
+        if not list(sfx_dir.glob(f"{kind}_*.wav")):
+            warn.append(f"нет звуков {kind}_*.wav в assets/sfx — в AE будут маркеры вместо звука")
+    for w_ in warn:
+        print("  ⚠ " + w_)
+    for g in subs:
+        print(f"  {g['t_in']:6.2f}–{g['t_out']:6.2f}{' H' if g.get('hold') else '  '}  " + " ".join(
+            ("/ " if w.get("line") and not g["words"][k - 1].get("line") else "") +
+            (("*" + w["w"] + "*") if w.get("accent") else w["w"]) for k, w in enumerate(g["words"])))
     print(f"→ {out_dir / 'clip_data.jsxinc'}")
     return 0
 
