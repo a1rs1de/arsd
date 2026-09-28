@@ -51,23 +51,47 @@ def find_word(words, at: str, n: int = 1, after: float = -1.0) -> int:
     raise SystemExit(f"Слово «{at}» (вхождение {n}) не найдено в edit.json")
 
 
-def group_subtitles(words, fps: float, duration: float):
+ACCENT_HOLD = 0.9  # акцент на экране не меньше, с (6.3: «чтобы было видно»)
+
+
+def group_subtitles(words, fps: float, duration: float, accents=frozenset()):
+    """Группы по 2–4 слова (6.1). Акцентное слово ЗАКАНЧИВАЕТ строку (или строку заканчивает одно
+    последнее слово фразы после него — «move on»), и строка держится ACCENT_HOLD секунд."""
     lead = 1.5 / fps
     groups, cur = [], []
 
-    def flush():
+    def flush(hold=False):
         if cur:
-            groups.append(list(cur))
+            groups.append({"w": list(cur), "hold": hold})
             cur.clear()
 
-    for i, w in enumerate(words):
-        txt = clean(w["w"])
-        if not txt:
+    def fits(ws):
+        return len(ws) <= MAX_WORDS and len(" ".join(clean(x["w"]) for x in ws)) <= MAX_CHARS
+
+    i = 0
+    while i < len(words):
+        w = words[i]
+        if not clean(w["w"]):
+            i += 1
             continue
         if cur and cur[-1].get("segment") != w.get("segment"):  # склейка — новая строка
             flush()
-        chars = len(" ".join(clean(x["w"]) for x in cur + [w]))
-        if cur and (len(cur) >= MAX_WORDS or chars > MAX_CHARS):
+        if w["_i"] in accents:
+            # берём к акценту до 2 предыдущих слов, если влезают; остальное — отдельной строкой
+            carry = []
+            while cur and len(carry) < 2 and fits([cur[-1]] + carry + [w]) and not ends_phrase(cur[-1]["w"]):
+                carry.insert(0, cur.pop())
+            flush()
+            cur.extend(carry + [w])
+            nxt = words[i + 1] if i + 1 < len(words) else None
+            if (nxt and not ends_phrase(w["w"]) and ends_phrase(nxt["w"]) and nxt.get("segment") == w.get("segment")
+                    and fits(cur + [nxt])):
+                cur.append(nxt)  # «to *move* on.» — договариваем фразу в той же строке
+                i += 1
+            flush(hold=True)
+            i += 1
+            continue
+        if cur and not fits(cur + [w]):
             # не оставляем служебное слово висеть в конце строки
             if len(cur) >= 2 and norm(cur[-1]["w"]) in DANGLING and not ends_phrase(cur[-1]["w"]):
                 carry = cur.pop()
@@ -78,20 +102,35 @@ def group_subtitles(words, fps: float, duration: float):
         cur.append(w)
         if ends_phrase(w["w"]):
             flush()
+        i += 1
     flush()
-    # одиночное слово в конце фразы — приклеиваем к предыдущей группе, если влезает
+
+    # одиночное слово в конце фразы — приклеиваем к предыдущей группе, если влезает (не к акцентной)
     merged = []
     for g in groups:
-        if merged and len(g) == 1 and merged[-1][-1].get("segment") == g[0].get("segment") and len(merged[-1]) < MAX_WORDS and \
-                len(" ".join(clean(x["w"]) for x in merged[-1] + g)) <= MAX_CHARS and \
-                g[0]["start"] - merged[-1][-1]["end"] < 0.4:
-            merged[-1].extend(g)
+        if merged and len(g["w"]) == 1 and not merged[-1]["hold"] and not g["hold"] and \
+                merged[-1]["w"][-1].get("segment") == g["w"][0].get("segment") and fits(merged[-1]["w"] + g["w"]) and \
+                g["w"][0]["start"] - merged[-1]["w"][-1]["end"] < 0.4:
+            merged[-1]["w"].extend(g["w"])
         else:
             merged.append(g)
-
+    # короткий огрызок перед акцентной строкой («or is» на 0,3 с) — к предыдущей строке, если влезает
+    gi = 1
+    while gi < len(merged):
+        g, prev = merged[gi], merged[gi - 1]
+        nxt_hold = gi + 1 < len(merged) and merged[gi + 1]["hold"]
+        short = len(g["w"]) <= 2 and (g["w"][-1]["end"] - g["w"][0]["start"]) < 0.45
+        if short and nxt_hold and not g["hold"] and not prev["hold"] and \
+                prev["w"][-1].get("segment") == g["w"][0].get("segment") and fits(prev["w"] + g["w"]):
+            prev["w"].extend(g["w"])
+            del merged[gi]
+            continue
+        gi += 1
     # одиночное слово после длинной строки — забираем к нему хвост предыдущей («look at / the Greens category»)
     for gi in range(1, len(merged)):
-        g, prev = merged[gi], merged[gi - 1]
+        g, prev = merged[gi]["w"], merged[gi - 1]["w"]
+        if merged[gi - 1]["hold"] or merged[gi]["hold"]:
+            continue
         if len(g) == 1 and len(prev) >= 3 and prev[-1].get("segment") == g[0].get("segment"):
             moved = []
             while len(prev) > 2 and len(moved) < 2:
@@ -99,23 +138,29 @@ def group_subtitles(words, fps: float, duration: float):
                 if norm(prev[-1]["w"]) not in DANGLING:
                     break
             if len(" ".join(clean(x["w"]) for x in moved + g)) <= MAX_CHARS and norm(prev[-1]["w"]) not in DANGLING:
-                merged[gi] = moved + g
+                merged[gi]["w"] = moved + g
             else:
                 prev.extend(moved)
 
-    out, prev_in = [], -1.0
-    for gi, g in enumerate(merged):
-        t_in = max(0.0, g[0]["start"] - lead, prev_in + 0.25)  # время слов местами приблизительное
+    out, prev_in, hold_until = [], -1.0, -1.0
+    for gi, grp in enumerate(merged):
+        g = grp["w"]
+        t_in = max(0.0, g[0]["start"] - lead, prev_in + 0.25, hold_until)  # время слов местами приблизительное
         prev_in = t_in
         for x in g:
             x["start"] = max(x["start"], t_in + lead)
+        if grp["hold"]:
+            acc_t = next(x["start"] for x in g if x["_i"] in accents)
+            hold_until = acc_t - lead + ACCENT_HOLD
         if gi + 1 < len(merged):
-            nxt = max(0.0, merged[gi + 1][0]["start"] - lead, t_in + 0.25)
-            t_out = nxt if nxt - g[-1]["end"] < 0.8 else g[-1]["end"] + 0.3
+            nxt = max(0.0, merged[gi + 1]["w"][0]["start"] - lead, t_in + 0.25, hold_until)
+            t_out = nxt if nxt - g[-1]["end"] < 0.8 or grp["hold"] else g[-1]["end"] + 0.3
         else:
-            t_out = min(duration, g[-1]["end"] + 0.5)
+            t_out = duration if grp["hold"] else min(duration, g[-1]["end"] + 0.5)
         out.append({"t_in": round(t_in, 3), "t_out": round(max(t_out, t_in + 0.3), 3),
-                    "words": [{"w": clean(x["w"]), "t": round(max(t_in, x["start"] - lead), 3), "i": x["_i"]} for x in g]})
+                    **({"hold": True} if grp["hold"] else {}),
+                    "words": [{"w": clean(x["w"]), "t": round(max(t_in, x["start"] - lead), 3),
+                               **({"accent": True} if x["_i"] in accents else {})} for x in g]})
     return out
 
 
@@ -191,8 +236,7 @@ def main() -> int:
         busy.append((hl["from"], hl["to"] + 0.3))
         sfx.append({"t": hl["from"], "kind": "hit", "prio": 1})
 
-    # Субтитры и акценты.
-    subs = group_subtitles(words, fps, dur)
+    # Акценты (6.3), затем субтитры — строка заканчивается на акценте.
     accents, last = set(), -99.0
     for a in spec.get("accents", []):
         i = find_word(words, a["at"], a.get("n", 1))
@@ -205,11 +249,8 @@ def main() -> int:
             continue
         accents.add(i)
         last = t
-        sfx.append({"t": t - 1 / fps, "kind": "pop", "prio": 3})
-    for g in subs:
-        for w in g["words"]:
-            if w.pop("i") in accents:
-                w["accent"] = True
+        sfx.append({"t": t - 1 / fps, "kind": spec.get("accent_sfx", "pop"), "prio": 3})
+    subs = group_subtitles(words, fps, dur, accents)
 
     # SFX: ≤ 2 в секунду (12.4), приоритет 1 важнее.
     sfx.sort(key=lambda s: (s["prio"], s["t"]))
@@ -230,7 +271,7 @@ def main() -> int:
         "style": {
             "paper": [253, 252, 245], "white": [255, 255, 255], "ink": [17, 17, 17], "grey_line": [189, 189, 189],
             "grey_text": [107, 107, 107], "accent": [253, 252, 245],
-            "sub_y": 1250, "sub_size": 68, "accent_scale": 1.12, "headline_size": 130,
+            "sub_y": 1250, "sub_size": 68, "accent_scale": 1.12, "headline_size": 130, "headline_accent_scale": 1.08,
             "fonts": {
                 "display": ["Coolvetica", "Regular"], "display_italic": ["Coolvetica", "Italic"],
                 "sub": ["Montserrat", "Bold"], "light": ["Montserrat", "Light"], "medium": ["Montserrat", "Medium"],
@@ -254,7 +295,7 @@ def main() -> int:
     share = sum(x["t_out"] - x["t_in"] for x in inserts) / dur
     print(f"доля вставок: {share * 100:.0f} % (гайд 30–40 %)")
     for g in subs:
-        print(f"  {g['t_in']:6.2f}–{g['t_out']:6.2f}  " + " ".join(("*" + w["w"] + "*") if w.get("accent") else w["w"] for w in g["words"]))
+        print(f"  {g['t_in']:6.2f}–{g['t_out']:6.2f}{' H' if g.get('hold') else '  '}  " + " ".join(("*" + w["w"] + "*") if w.get("accent") else w["w"] for w in g["words"]))
     print(f"→ {out_dir / 'clip_data.jsxinc'}")
     return 0
 

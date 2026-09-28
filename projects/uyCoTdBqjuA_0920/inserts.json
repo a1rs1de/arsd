@@ -3,8 +3,20 @@
   "style": "S2_bw",
   "headline": {
     "lines": [
-      "From good",
-      "to great"
+      [
+        {
+          "t": "FROM GOOD"
+        }
+      ],
+      [
+        {
+          "t": "TO"
+        },
+        {
+          "t": "GREAT",
+          "accent": true
+        }
+      ]
     ],
     "from": 0.1,
     "to": 3.0,

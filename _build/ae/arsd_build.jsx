@@ -114,23 +114,30 @@
         "Montserrat|Bold": ["Montserrat-Bold"], "Montserrat|Light": ["Montserrat-Light"],
         "Montserrat|Medium": ["Montserrat-Medium"], "Playfair Display|Italic": ["PlayfairDisplay-Italic"]
     };
-    var fontCache = {};
+    var fontCache = {}, fontObjCache = {};
+    function realFont(arr) {                       // не подменённый шрифт из списка
+        var i;
+        if (!arr) { return null; }
+        for (i = 0; i < arr.length; i++) {
+            try { if (!arr[i].isSubstitute) { return arr[i]; } } catch (e) { return arr[i]; }
+        }
+        return null;
+    }
     function font(key) {
         var fam = S.fonts[key][0], sty = S.fonts[key][1], id = fam + "|" + sty;
         if (fontCache[id]) { return fontCache[id]; }
-        var ps = null, cands = FONT_FALLBACK[id] || [fam.replace(/ /g, "") + "-" + sty], i, r;
+        var ps = null, obj = null, cands = FONT_FALLBACK[id] || [fam.replace(/ /g, "") + "-" + sty], i;
         try {
             if (app.fonts && app.fonts.getFontsByFamilyNameAndStyleName) {
-                r = app.fonts.getFontsByFamilyNameAndStyleName(fam, sty);
-                if (r && r.length) { ps = r[0].postScriptName; }
-                for (i = 0; !ps && i < cands.length; i++) {
-                    r = app.fonts.getFontsByPostScriptName(cands[i]);
-                    if (r && r.length) { ps = cands[i]; }
-                }
-                if (!ps) { missing.fonts[fam + " " + sty] = true; }
+                for (i = 0; !obj && i < cands.length; i++) { obj = realFont(app.fonts.getFontsByPostScriptName(cands[i])); }
+                if (!obj) { obj = realFont(app.fonts.getFontsByFamilyNameAndStyleName(fam, sty)); }
+                // статичный файл «Montserrat Light» числится семейством «Montserrat Light», стиль «Regular»
+                if (!obj) { obj = realFont(app.fonts.getFontsByFamilyNameAndStyleName(fam + " " + sty, "Regular")); }
+                if (obj) { ps = obj.postScriptName; } else { missing.fonts[fam + " " + sty] = true; }
             }
         } catch (e) {}
         fontCache[id] = ps || cands[0];
+        fontObjCache[id] = obj;
         return fontCache[id];
     }
 
@@ -140,7 +147,9 @@
         var td = l.property("ADBE Text Properties").property("ADBE Text Document");
         var d = td.value;
         try { d.resetCharStyle(); } catch (e) {}
-        d.font = font(fontKey);
+        var ps = font(fontKey), fid = S.fonts[fontKey][0] + "|" + S.fonts[fontKey][1];
+        d.font = ps;
+        try { if (fontObjCache[fid]) { d.fontObject = fontObjCache[fid]; } } catch (e) {}
         d.fontSize = size;
         d.applyFill = true;
         d.fillColor = rgb(color);
@@ -149,6 +158,12 @@
         if (leading) { d.autoLeading = false; d.leading = leading; }
         d.justification = just || ParagraphJustification.CENTER_JUSTIFY;
         td.setValue(d);
+        try {                                      // AE молча подставил другой шрифт — в отчёт
+            var fo = td.value.fontObject;
+            if ((fo && fo.isSubstitute) || (td.value.font && td.value.font !== ps)) {
+                missing.fonts[S.fonts[fontKey][0] + " " + S.fonts[fontKey][1] + " (подставлен " + (td.value.font || "?") + ")"] = true;
+            }
+        } catch (e) {}
         l.name = str.replace(/[\r\n]+/g, " ").substr(0, 30);
         return l;
     }
@@ -158,6 +173,25 @@
         return r;
     }
     function placeText(l, x, y, t) { centerAnchor(l, t); P(l, "pos").setValue([x, y]); return l; }
+    // строка из кусков разными шрифтами (Coolvetica + Playfair Italic): выравнивание по базовой линии
+    function textRun(comp, segs, size, color, cx, baseY, accentScale) {
+        var layers = [], widths = [], total = 0, gap = size * 0.22, k, x;
+        for (k = 0; k < segs.length; k++) {
+            var acc = !!segs[k].accent;
+            var tl = text(comp, segs[k].t, acc ? "accent" : "display", acc ? Math.round(size * (accentScale || 1.1)) : size,
+                          color, ParagraphJustification.LEFT_JUSTIFY, acc ? 0 : -10);
+            var r = tl.sourceRectAtTime(0, false);
+            P(tl, "anchor").setValue([r.left, 0]);          // 0 — базовая линия текста
+            layers.push(tl); widths.push(r.width); total += r.width;
+        }
+        total += gap * (segs.length - 1);
+        x = cx - total / 2;
+        for (k = 0; k < layers.length; k++) {
+            P(layers[k], "pos").setValue([x, baseY]);
+            x += widths[k] + gap;
+        }
+        return layers;
+    }
 
     // Т1: мягкое появление (7.1) — opacity, blur 16→0, y +30→0
     function T1(l, t, y, blurFrom, dy) {
@@ -270,6 +304,19 @@
     // ---------- карточка S2 (8.3) ----------
     function lcg(seed) { var s = seed; return function () { s = (s * 1103515245 + 12345) % 2147483648; return s / 2147483648; }; }
 
+    function clipToCard(comp, layer, cx, cy, w, h) {
+        var m = shapeLayer(comp, "matte " + layer.name, cx, cy), g = group(m, "m");
+        rect(g, w, h, 32);
+        fill(g, S.white);
+        m.moveBefore(layer);                               // маска — сразу над слоем
+        try {
+            if (layer.setTrackMatte) { layer.setTrackMatte(m, TrackMatteType.ALPHA); }
+            else { layer.trackMatteType = TrackMatteType.ALPHA; }
+        } catch (e) { try { layer.trackMatteType = TrackMatteType.ALPHA; } catch (e2) {} }
+        m.enabled = false;
+        return m;
+    }
+
     function card(comp, cx, cy, w, h, opts) {
         opts = opts || {};
         var dur = comp.duration, i, g, l;
@@ -279,11 +326,12 @@
         fill(g, S.white);
         shadow(c, 35, 20, 60, 135);
 
-        // тонкие окружности через всю карточку, медленно вращаются
+        // тонкие окружности через всю карточку, медленно вращаются; за край карточки не выходят (маска)
         l = shapeLayer(comp, "circles", cx, cy);
         g = group(l, "c1"); ellipse(g, w * 0.9, h * 0.8, w * 0.08, -h * 0.05); stroke(g, S.grey_line, 2, 50);
         g = group(l, "c2"); ellipse(g, w * 1.1, w * 1.1, -w * 0.12, h * 0.12); stroke(g, S.grey_line, 1.5, 45);
         smooth(P(l, "rot"), 0, dur, 0, 12);
+        clipToCard(comp, l, cx, cy, w, h);
 
         // сетка 7×5 за объектом
         if (opts.grid !== false) {
@@ -293,6 +341,7 @@
             for (i = 0; i <= 7; i++) { path(g, [[-gw / 2 + gw * i / 7, -gh / 2], [-gw / 2 + gw * i / 7, gh / 2]], false); }
             for (i = 0; i <= 5; i++) { path(g, [[-gw / 2, -gh / 2 + gh * i / 5], [gw / 2, -gh / 2 + gh * i / 5]], false); }
             stroke(g, S.grey_line, 0.75, 30);
+            clipToCard(comp, l, cx, cy, w, h);
         }
         // штрихкод вверху справа
         var rnd = lcg(Math.round(cx + cy + w)), x0 = cx + w / 2 - 190, y0 = cy - h / 2 + 44;
@@ -547,19 +596,19 @@
             var tl = text(subs, w.w, acc ? "accent" : "sub", acc ? Math.round(SS * S.accent_scale) : SS, acc ? S.accent : S.paper,
                           ParagraphJustification.LEFT_JUSTIFY, acc ? 0 : -5);
             var r = tl.sourceRectAtTime(0, false);
-            P(tl, "anchor").setValue([r.left, r.top + r.height / 2]);
+            P(tl, "anchor").setValue([r.left, 0]);        // базовая линия
             layers.push(tl); widths.push(r.width); total += r.width;
         }
         total += space * (grp.words.length - 1);
-        var x = W / 2 - total / 2;
+        var x = W / 2 - total / 2, BY = SY + SS * 0.36;   // центр строки y 1250 → базовая линия
         for (j = 0; j < layers.length; j++) {
             var lw = layers[j];
-            P(lw, "pos").setValue([x, SY]);
+            P(lw, "pos").setValue([x, BY]);
             x += widths[j] + space;
             lw.inPoint = grp.words[j].t;
             lw.outPoint = grp.t_out;
             shadow(lw, 85, 4, 11, 180);
-            T1(lw, grp.words[j].t, SY);
+            T1(lw, grp.words[j].t, BY);
             lw.motionBlur = true;
         }
     }
@@ -615,13 +664,20 @@
 
     // заголовок-хук (0, 5.2): Coolvetica 130 px
     if (C.headline) {
-        var hl = text(reel, C.headline.lines.join("\r"), "display", S.headline_size, S.paper, null, -10, S.headline_size * 0.95);
-        placeText(hl, W / 2, C.headline.y, 0);
-        shadow(hl, 60, 6, 18, 180);
-        T2(hl, C.headline.from);
-        T6(hl, C.headline.to);
-        hl.outPoint = C.headline.to + S.T6 + FR;
-        hl.motionBlur = true;
+        var HS = S.headline_size, lines = C.headline.lines, lh = HS * 0.98, li, k2;
+        for (li = 0; li < lines.length; li++) {
+            var segs = (typeof lines[li] === "string") ? [{ t: lines[li] }] : lines[li];
+            var baseY = C.headline.y + (li - (lines.length - 1) / 2) * lh + HS * 0.36;
+            var run = textRun(reel, segs, HS, S.paper, W / 2, baseY, S.headline_accent_scale);
+            for (k2 = 0; k2 < run.length; k2++) {
+                var hl = run[k2];
+                shadow(hl, 60, 6, 18, 180);
+                T2(hl, C.headline.from + li * 0.12);
+                T6(hl, C.headline.to);
+                hl.outPoint = C.headline.to + S.T6 + FR;
+                hl.motionBlur = true;
+            }
+        }
     }
 
     var subL = reel.layers.add(subs);
