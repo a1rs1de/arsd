@@ -4,9 +4,11 @@
  * Все тайминги — в кадрах при 29.97 fps — в блоке T ниже: сдвигайте их под звук.
  * Позиция всей композиции — props x, y, scale (см. Root.tsx), по умолчанию верх кадра, лицо в центре не закрыто.
  */
-import React, {useEffect, useState} from 'react';
-import {AbsoluteFill, Easing, continueRender, delayRender, interpolate, useCurrentFrame} from 'remotion';
-import '@fontsource/inter/900.css';
+import React from 'react';
+import {AbsoluteFill, Easing, interpolate, useCurrentFrame} from 'remotion';
+import {bezier, clamp, easeInOut as inOut, easeOut as out, popIn} from '../shared/anim';
+import {checkerStyle, FPS_2997} from '../shared/checker';
+import {useInterBlack} from '../shared/fonts';
 import {Disc, DISC_SIZE} from './Disc';
 import {Laptop, LAPTOP_BOX, SLOT} from './Laptop';
 
@@ -50,7 +52,7 @@ export const T = {
 } as const;
 // ──────────────────────────────────────────────────────────────────────────────────────
 
-export const FPS = 30000 / 1001;
+export const FPS = FPS_2997;
 export const DURATION = 180;
 export const STAGE_W = 1080; // «сцена» в своих координатах; x/y/scale ставят её центр в кадр
 export const STAGE_H = 600;
@@ -74,35 +76,12 @@ export type DeadlineDiscProps = {
 	checkerboard?: boolean;
 };
 
-const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
-const inOut = Easing.inOut(Easing.cubic);
-const out = Easing.out(Easing.cubic);
-
-function bezier(a: number, c: number, b: number, t: number) {
-	return (1 - t) * (1 - t) * a + 2 * (1 - t) * t * c + t * t * b;
-}
-
-function useInterFont() {
-	const [handle] = useState(() => delayRender('Inter Black'));
-	useEffect(() => {
-		Promise.all([
-			document.fonts.load('900 72px Inter', 'ДЕДЛАЙН'),
-			document.fonts.load('900 40px Inter', 'ИГРАТЬ'),
-		])
-			.then(() => continueRender(handle))
-			.catch(() => continueRender(handle));
-	}, [handle]);
-}
-
 export const DeadlineDisc: React.FC<DeadlineDiscProps> = ({x, y, scale, checkerboard}) => {
-	useInterFont();
+	useInterBlack(['ДЕДЛАЙН', 'ИГРАТЬ']);
 	const f = useCurrentFrame();
 
 	// ── диск: появление, покачивание ──
-	const appear =
-		f < T.DISC_IN_PEAK
-			? interpolate(f, [T.DISC_IN, T.DISC_IN_PEAK], [0, 1.1], {...clamp, easing: out})
-			: interpolate(f, [T.DISC_IN_PEAK, T.DISC_IN_END], [1.1, 1], {...clamp, easing: inOut});
+	const appear = popIn(f, T.DISC_IN, T.DISC_IN_PEAK, T.DISC_IN_END, 1.1);
 	const swayFade = interpolate(f, [T.DISC_IN_END, T.DISC_IN_END + 6, T.TILT_START, T.TILT_START + 12], [0, 1, 1, 0], clamp);
 	const sway = Math.sin(((f - T.DISC_IN_END) / T.SWAY_PERIOD) * Math.PI * 2) * T.SWAY_DEG * swayFade;
 
@@ -134,10 +113,7 @@ export const DeadlineDisc: React.FC<DeadlineDiscProps> = ({x, y, scale, checkerb
 			: interpolate(f, [T.TILT_START, T.TILT_END], [0, 1], clamp);
 
 	// ── ноутбук ──
-	const laptopScale =
-		f < T.LAPTOP_IN_PEAK
-			? interpolate(f, [T.LAPTOP_IN, T.LAPTOP_IN_PEAK], [0, 1.05], {...clamp, easing: out})
-			: interpolate(f, [T.LAPTOP_IN_PEAK, T.LAPTOP_IN_END], [1.05, 1], {...clamp, easing: inOut});
+	const laptopScale = popIn(f, T.LAPTOP_IN, T.LAPTOP_IN_PEAK, T.LAPTOP_IN_END, 1.05);
 	const shakeSeq = [0, T.SHAKE_PX, -T.SHAKE_PX, T.SHAKE_PX * 0.6, 0];
 	const si = f - T.SHAKE_START;
 	const shakeX = si >= 0 && si <= T.SHAKE_FRAMES + 1 ? shakeSeq[Math.min(si, shakeSeq.length - 1)] : 0;
@@ -216,13 +192,4 @@ export const DeadlineDisc: React.FC<DeadlineDiscProps> = ({x, y, scale, checkerb
 			</div>
 		</AbsoluteFill>
 	);
-};
-
-const checkerStyle: React.CSSProperties = {
-	backgroundColor: '#d9d9d9',
-	backgroundImage:
-		'linear-gradient(45deg, #b8b8b8 25%, transparent 25%), linear-gradient(-45deg, #b8b8b8 25%, transparent 25%),' +
-		'linear-gradient(45deg, transparent 75%, #b8b8b8 75%), linear-gradient(-45deg, transparent 75%, #b8b8b8 75%)',
-	backgroundSize: '60px 60px',
-	backgroundPosition: '0 0, 0 30px, 30px -30px, -30px 0px',
 };

@@ -23,4 +23,4 @@
 
 ## Анимации (Remotion)
 
-- [`remotion/`](remotion/README.md) — оверлеи на React/Remotion. «ДЕДЛАЙН» (диск → ноутбук): `cd remotion && npm run render:deadline`, результат в `out/deadline-disc/`.
+- [`remotion/`](remotion/README.md) — оверлеи на React/Remotion: «ДЕДЛАЙН» (`npm run render:deadline` → `out/deadline-disc/`), «СТРЕСС» (`npm run render:stress` → `out/stress/`).

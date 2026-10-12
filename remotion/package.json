@@ -5,7 +5,8 @@
   "description": "Анимации-оверлеи для роликов arsd (Remotion)",
   "scripts": {
     "studio": "remotion studio",
-    "render:deadline": "node scripts/render-deadline-disc.mjs"
+    "render:deadline": "node scripts/render.mjs deadline",
+    "render:stress": "node scripts/render.mjs stress"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",

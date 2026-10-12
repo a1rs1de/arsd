@@ -1,4 +1,5 @@
 import React from 'react';
+import {STICKER_SHADOW, StickerOutlineFilter} from '../shared/Sticker';
 
 /** Где стоит ноутбук на сцене (1080×600), px. */
 export const LAPTOP_BOX = {left: 540, top: 110, width: 460, height: 400};
@@ -27,18 +28,10 @@ export const Laptop: React.FC<{
 }> = ({screenOn, flash, playScale, playGlow}) => {
 	const {width: W, height: H} = LAPTOP_BOX;
 	return (
-		<div style={{position: 'absolute', inset: 0, filter: 'drop-shadow(0 16px 20px rgba(0,0,0,0.35))'}}>
+		<div style={{position: 'absolute', inset: 0, filter: STICKER_SHADOW}}>
 			<svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{position: 'absolute', inset: 0, overflow: 'visible'}}>
 				<defs>
-					<filter id="sticker-outline" x="-10%" y="-10%" width="120%" height="120%">
-						<feMorphology in="SourceAlpha" operator="dilate" radius={7} result="dil" />
-						<feFlood floodColor="#ffffff" />
-						<feComposite in2="dil" operator="in" result="outline" />
-						<feMerge>
-							<feMergeNode in="outline" />
-							<feMergeNode in="SourceGraphic" />
-						</feMerge>
-					</filter>
+					<StickerOutlineFilter id="sticker-outline" radius={7} />
 					<linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
 						<stop offset="0" stopColor="#4a515c" />
 						<stop offset="1" stopColor="#30353d" />
