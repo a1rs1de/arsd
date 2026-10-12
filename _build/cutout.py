@@ -33,6 +33,10 @@ def main() -> int:
     ap.add_argument("--poly", nargs="*", default=[],
                     help="добавить в объект многоугольник «x,y;x,y;…» в пикселях исходника (белая бандероль, наклейка)")
     ap.add_argument("--bw", action="store_true", help="сразу перевести в ч/б")
+    ap.add_argument("--sticker", action="store_true",
+                    help="стикер с белой обводкой и тенью на белом фоне: фон и тень — прозрачные, обводка остаётся")
+    ap.add_argument("--sticker-outline", type=int, default=26, help="ширина белой обводки стикера, px (для --sticker)")
+    ap.add_argument("--sticker-close", type=int, default=71, help="сглаживание контура стикера, px (для --sticker)")
     ap.add_argument("--pad", type=int, default=24)
     args = ap.parse_args()
 
@@ -63,6 +67,24 @@ def main() -> int:
     n, lab = cv2.connectedComponents(light, connectivity=4)
     border = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
     bg = np.isin(lab, list(border))
+    if args.sticker:
+        # Белая обводка стикера такая же светлая, как фон; разделяет их только мягкая серая тень.
+        # 1) фон: светлое, связанное с краем; 2) тень: серое, примыкающее к фону; обводка (≥253) в тень не входит.
+        V, Sat = hsv[:, :, 2].astype(int), hsv[:, :, 1].astype(int)
+        bgv = int(np.median(np.concatenate([V[:4].ravel(), V[-4:].ravel(), V[:, :4].ravel(), V[:, -4:].ravel()])))
+        outer = (V >= bgv - 1) & (Sat < 12)
+        n, lab = cv2.connectedComponents(outer.astype(np.uint8), connectivity=4)
+        edge_l = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
+        bg = np.isin(lab, list(edge_l))
+        shadow = (V < bgv - 1) & (V > bgv - 60) & (Sat < 25)
+        grow = bg.copy()
+        for _ in range(200):  # тень растим от фона внутрь, пока она примыкает
+            nb = cv2.dilate(grow.astype(np.uint8), np.ones((3, 3), np.uint8)).astype(bool) & (shadow | outer) & ~grow
+            nb &= ~(outer & ~bg)  # светлое не-фоновое (обводка) не захватываем
+            if not nb.any():
+                break
+            grow |= nb
+        bg = grow
     obj = (~bg).astype(np.uint8)
     obj = cv2.morphologyEx(obj, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
 
@@ -74,6 +96,30 @@ def main() -> int:
     big = areas.max()
     keep = [i + 1 for i, a in enumerate(areas) if a >= args.keep * big]
     mask = np.isin(lab, keep).astype(np.uint8) * 255
+    if args.sticker:
+        # где тень слабая, обводку могло «съесть» вместе с фоном: восстанавливаем её как у настоящего стикера —
+        # рисунок + отступ на ширину обводки, контур сглажен, дыры заполнены
+        V, Sat = hsv[:, :, 2].astype(int), hsv[:, :, 1].astype(int)
+        content = ((V < 215) | (Sat > 40)).astype(np.uint8) * 255
+        r = args.sticker_outline
+        grown = cv2.dilate(content, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * r + 1, 2 * r + 1)))
+        mask = cv2.bitwise_or(mask, grown)
+        k = args.sticker_close
+        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k)))
+        ff = mask.copy()
+        cv2.floodFill(ff, np.zeros((h + 2, w + 2), np.uint8), (0, 0), 255)
+        mask = cv2.bitwise_or(mask, cv2.bitwise_not(ff))  # заполнить дыры
+        n2, lab2, st2, _ = cv2.connectedComponentsWithStats((mask > 0).astype(np.uint8), connectivity=8)
+        mask = (lab2 == 1 + int(np.argmax(st2[1:, cv2.CC_STAT_AREA]))).astype(np.uint8) * 255
+        # серую тень за пределами обводки не берём: срезаем всё, что дальше обводки от рисунка
+        limit = cv2.dilate(content, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * r + 9, 2 * r + 9)))
+        limit = cv2.morphologyEx(limit, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (k, k)))
+        ff = limit.copy()
+        cv2.floodFill(ff, np.zeros((h + 2, w + 2), np.uint8), (0, 0), 255)
+        limit = cv2.bitwise_or(limit, cv2.bitwise_not(ff))
+        mask = cv2.bitwise_and(mask, limit)
+        mask = cv2.GaussianBlur(mask, (5, 5), 0)
+        mask = np.where(mask > 127, 255, 0).astype(np.uint8)
     for spec in args.poly:
         pts = np.array([[float(v) for v in pt.split(",")] for pt in spec.split(";")], np.int32)
         cv2.fillPoly(mask, [pts], 255)
