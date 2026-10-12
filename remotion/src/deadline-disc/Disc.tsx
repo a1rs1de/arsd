@@ -13,7 +13,7 @@ const round: React.CSSProperties = {position: 'absolute', borderRadius: '50%'};
 
 /**
  * CD/DVD: серебро с радужным переливом, отверстие (настоящая прозрачность), тонкое кольцо,
- * надпись «ДЕДЛАЙН» над отверстием от левого края до правого, блик.
+ * надпись «ДЕДЛАЙН» дугой вдоль верхнего края диска (от левого края через верх к правому), блик.
  * glint 0…1 — положение блика, tilt 0…1 — насколько диск уже повёрнут (перелив сильнее).
  */
 const HOLE_MASK = `radial-gradient(circle at 50% 50%, transparent ${HOLE_R}px, #000 ${HOLE_R + 1}px)`;
@@ -30,10 +30,13 @@ export const Disc: React.FC<{glint: number; frame: number; tilt: number}> = ({gl
 	const hueShift = frame * 1.5 + tilt * 120; // перелив «бежит» при повороте
 	const inner = DISC_SIZE - RIM * 2;
 
-	// текст: верхняя половина, базовая линия чуть выше отверстия, ширина ≈ хорда на этой высоте
-	const textW = DISC_SIZE * 0.78;
+	// текст дугой: верх букв почти у края диска, базовая линия — дуга радиуса ARC_R над отверстием
 	const fontSize = DISC_SIZE * 0.17;
-	const baseline = R - HOLE_R - DISC_SIZE * 0.03;
+	const capH = fontSize * 0.73; // высота заглавных Inter Black
+	const ARC_R = R - RIM - 13 - capH; // радиус базовой линии
+	const ARC_SPAN = 0.82; // доля полуокружности, которую занимает слово (≈150°)
+	const textLen = Math.PI * ARC_R * ARC_SPAN;
+	const arcPath = `M ${R - ARC_R} ${R} A ${ARC_R} ${ARC_R} 0 0 1 ${R + ARC_R} ${R}`; // верхняя полуокружность слева направо
 
 	return (
 		<>
@@ -143,12 +146,10 @@ export const Disc: React.FC<{glint: number; frame: number; tilt: number}> = ({gl
 				viewBox={`0 0 ${DISC_SIZE} ${DISC_SIZE}`}
 				style={{position: 'absolute', inset: 0, overflow: 'visible'}}
 			>
+				<defs>
+					<path id="deadline-arc" d={arcPath} fill="none" />
+				</defs>
 				<text
-					x={R}
-					y={baseline}
-					textAnchor="middle"
-					textLength={textW}
-					lengthAdjust="spacingAndGlyphs"
 					fontFamily="Inter"
 					fontWeight={900}
 					fontSize={fontSize}
@@ -158,7 +159,15 @@ export const Disc: React.FC<{glint: number; frame: number; tilt: number}> = ({gl
 					strokeLinejoin="round"
 					paintOrder="stroke"
 				>
-					ДЕДЛАЙН
+					<textPath
+						href="#deadline-arc"
+						startOffset="50%"
+						textAnchor="middle"
+						textLength={textLen}
+						lengthAdjust="spacingAndGlyphs"
+					>
+						ДЕДЛАЙН
+					</textPath>
 				</text>
 			</svg>
 		</div>
