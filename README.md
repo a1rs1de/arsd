@@ -20,3 +20,7 @@
 ## Проекты
 
 - [`projects/uyCoTdBqjuA_0920`](projects/uyCoTdBqjuA_0920/README.md) — рилс «From good to great», стиль S2 ч/б. Материалы: [ASSETS.md](projects/uyCoTdBqjuA_0920/ASSETS.md).
+
+## Анимации (Remotion)
+
+- [`remotion/`](remotion/README.md) — оверлеи на React/Remotion. «ДЕДЛАЙН» (диск → ноутбук): `cd remotion && npm run render:deadline`, результат в `out/deadline-disc/`.
